@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AI超市">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0f172a">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>AI超市 - 主流AI工具一站式探索平台</title>
+    <meta name="description" content="AI超市汇聚157款主流AI工具，26大分类，提供详细介绍和下载引导。ChatGPT、Claude、Midjourney、DALL·E 3、GitHub Copilot等热门AI工具一站收录。">
+    <meta name="keywords" content="AI工具,AI超市,人工智能工具,ChatGPT,Midjourney,AI导航,AI工具箱">
+    <meta property="og:title" content="AI超市 - 主流AI工具一站式探索平台">
+    <meta property="og:description" content="157款主流AI工具，26大分类，提供详细介绍和下载引导。">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AI超市">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI超市 - 主流AI工具一站式探索平台">
+    <link rel="canonical" href="https://ai-supermarket.pages.dev">
+    <!-- 微信JS-SDK兼容 -->
+    <style>
+        :root {
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #273449;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            --border: #334155;
+            --tag-bg: #1e293b;
+            --tag-text: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        /* 星空背景 */
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+            opacity: 0;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* 头部 */
+        .header {
+            position: relative; z-index: 10;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky; top: 0;
+        }
+        .header-inner {
+            max-width: 1320px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 1.6rem; font-weight: 800; color: var(--text);
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white;
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+        .logo-sub {
+            font-size: 0.8rem; color: var(--accent-light);
+            font-weight: 500; letter-spacing: 0.05em;
+        }
+        .search-box {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 50px; padding: 8px 8px 8px 20px;
+            min-width: 320px; transition: var(--transition);
+        }
+        .search-box:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .search-box input {
+            background: none; border: none; color: var(--text);
+            font-size: 0.95rem; outline: none; flex: 1; min-width: 180px;
+        }
+        .search-box input::placeholder { color: var(--text-muted); }
+        .search-btn {
+            background: var(--accent); border: none; color: white;
+            width: 38px; height: 38px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; transition: var(--transition); flex-shrink: 0;
+        }
+        .search-btn:hover { background: #7c3aed; transform: scale(1.05); }
+        .header-stats {
+            display: flex; gap: 20px; align-items: center;
+        }
+        .header-stat {
+            text-align: center;
+        }
+        .header-stat-num {
+            font-size: 1.3rem; font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-stat-label { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* 主体布局 */
+        .main-container {
+            max-width: 1320px; margin: 0 auto; padding: 24px;
+            display: flex; gap: 24px; position: relative; z-index: 1;
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            width: 240px; flex-shrink: 0;
+            position: sticky; top: 100px; align-self: flex-start;
+            max-height: calc(100vh - 120px); overflow-y: auto;
+        }
+        .sidebar-title {
+            font-size: 0.85rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 12px; padding-left: 4px;
+        }
+        .category-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+        .category-item { }
+        .category-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 14px; border-radius: var(--radius-sm);
+            color: var(--text-muted); text-decoration: none;
+            font-size: 0.9rem; transition: var(--transition);
+            cursor: pointer; border: none; background: none; width: 100%; text-align: left;
+        }
+        .category-link:hover { background: var(--bg-card); color: var(--text); }
+        .category-link.active {
+            background: var(--accent); color: white;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+        .category-icon { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
+        .category-count {
+            margin-left: auto; font-size: 0.75rem;
+            background: var(--bg); padding: 2px 8px; border-radius: 20px;
+        }
+        .category-link.active .category-count {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* 内容区 */
+        .content { flex: 1; min-width: 0; }
+
+        /* 分类标题 */
+        .section-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+        }
+        .section-title {
+            font-size: 1.5rem; font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-count {
+            font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
+            background: var(--bg-card); padding: 4px 14px; border-radius: 20px;
+        }
+        .sort-btns { display: flex; gap: 6px; }
+        .sort-btn {
+            padding: 6px 14px; border-radius: 20px; font-size: 0.82rem;
+            background: var(--bg-card); border: 1px solid var(--border);
+            color: var(--text-muted); cursor: pointer; transition: var(--transition);
+        }
+        .sort-btn:hover { border-color: var(--accent); color: var(--text); }
+        .sort-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+        /* 工具卡片网格 */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 18px;
+        }
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .tool-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent), #6366f1);
+            opacity: 0; transition: var(--transition);
+        }
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
+        }
+        .tool-card:hover::before { opacity: 1; }
+        .tool-card-header {
+            display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px;
+        }
+        .tool-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; flex-shrink: 0;
+            background: var(--bg);
+        }
+        .tool-icon-img { width: 52px; height: 52px; border-radius: 14px; object-fit: cover; flex-shrink: 0; }
+        .tool-name-area { flex: 1; min-width: 0; }
+        .tool-name {
+            font-size: 1.1rem; font-weight: 700; color: var(--text);
+            margin-bottom: 2px;
+        }
+        .tool-vendor {
+            font-size: 0.8rem; color: var(--text-muted);
+        }
+        .tool-rating {
+            display: flex; align-items: center; gap: 4px; font-size: 0.82rem;
+            color: var(--warning); margin-top: 4px;
+        }
+        .tool-desc {
+            font-size: 0.88rem; color: var(--text-muted);
+            line-height: 1.5; margin-bottom: 14px;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .tool-tags {
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+        }
+        .tool-tag {
+            font-size: 0.72rem; padding: 4px 10px; border-radius: 20px;
+            background: var(--tag-bg); color: var(--tag-text);
+            border: 1px solid var(--border);
+        }
+        .tool-tag.hot {
+            background: rgba(239, 68, 68, 0.15); color: #fca5a5; border-color: rgba(239, 68, 68, 0.3);
+        }
+        .tool-tag.free {
+            background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.3);
+        }
+        .tool-actions {
+            display: flex; gap: 8px;
+        }
+        .btn {
+            padding: 8px 16px; border-radius: 8px; font-size: 0.85rem;
+            font-weight: 600; cursor: pointer; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 6px;
+            text-decoration: none; border: none;
+        }
+        .btn-primary {
+            background: var(--accent); color: white;
+        }
+        .btn-primary:hover { background: #7c3aed; box-shadow: 0 4px 12px var(--accent-glow); }
+        .btn-outline {
+            background: transparent; color: var(--text); border: 1px solid var(--border);
+        }
+        .btn-outline:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+        .btn-sm { padding: 5px 12px; font-size: 0.78rem; border-radius: 6px; }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center; padding: 80px 20px; color: var(--text-muted);
+        }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 16px; opacity: 0.5; }
+        .empty-state h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--text); }
+        .empty-state p { font-size: 0.9rem; }
+
+        /* 弹窗 */
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 100;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            padding: 24px; animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .modal {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); max-width: 640px; width: 100%;
+            max-height: 85vh; overflow-y: auto; animation: slideUp 0.3s ease;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+        }
+        .modal-header {
+            padding: 24px 24px 0; display: flex; align-items: flex-start; gap: 16px;
+            position: sticky; top: 0; background: var(--bg-card); z-index: 1;
+        }
+        .modal-close {
+            margin-left: auto; background: var(--bg); border: 1px solid var(--border);
+            color: var(--text-muted); width: 36px; height: 36px; border-radius: 50%;
+            cursor: pointer; font-size: 1.1rem; display: flex; align-items: center;
+            justify-content: center; transition: var(--transition); flex-shrink: 0;
+        }
+        .modal-close:hover { color: var(--text); border-color: var(--text-muted); }
+        .modal-body { padding: 20px 24px 24px; }
+        .modal .tool-icon, .modal .tool-icon-img { width: 64px; height: 64px; border-radius: 16px; }
+        .modal .tool-name { font-size: 1.4rem; }
+        .modal .tool-desc { font-size: 0.95rem; -webkit-line-clamp: unset; overflow: visible; }
+        .detail-section { margin-bottom: 20px; }
+        .detail-section h4 {
+            font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 0.08em; margin-bottom: 10px;
+        }
+        .detail-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        }
+        .detail-item {
+            background: var(--bg); padding: 12px 16px; border-radius: var(--radius-sm);
+        }
+        .detail-label { font-size: 0.75rem; color: var(--text-muted); }
+        .detail-value { font-size: 0.9rem; font-weight: 600; margin-top: 2px; }
+        .detail-features {
+            list-style: none; display: flex; flex-direction: column; gap: 6px;
+        }
+        .detail-features li {
+            font-size: 0.88rem; padding-left: 20px; position: relative;
+            color: var(--text-muted);
+        }
+        .detail-features li::before {
+            content: '✦'; position: absolute; left: 0; color: var(--accent-light);
+        }
+
+        /* 响应式 - 平板 */
+        @media (max-width: 1024px) {
+            .main-container { padding: 16px; gap: 16px; }
+            .sidebar { width: 200px; }
+            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+        }
+
+        @media (max-width: 900px) {
+            .main-container { flex-direction: column; padding: 12px; }
+            .sidebar {
+                width: 100%; position: static; max-height: none;
+                overflow-x: auto; -webkit-overflow-scrolling: touch;
+                padding-bottom: 4px; margin-bottom: 8px;
+            }
+            .sidebar-title { display: none; }
+            .category-list { flex-direction: row; flex-wrap: nowrap; gap: 4px; }
+            .category-link { white-space: nowrap; padding: 8px 12px; font-size: 0.82rem; border-radius: 20px; }
+            .category-count { display: none; }
+            .tools-grid { grid-template-columns: 1fr; gap: 12px; }
+            .search-box { min-width: 0; flex: 1; padding: 6px 6px 6px 14px; }
+            .search-box input { font-size: 0.9rem; }
+            .header-inner { gap: 10px; padding: 0 16px; }
+            .header-stats { display: none; }
+            .header { padding: 12px 0; }
+            .logo { font-size: 1.3rem; }
+            .logo-icon { width: 36px; height: 36px; font-size: 1.2rem; border-radius: 10px; }
+            .section-title { font-size: 1.2rem; }
+            .modal { margin: 12px; max-height: 92vh; max-height: 92dvh; border-radius: 14px; }
+            .modal-header { padding: 16px 16px 0; }
+            .modal-body { padding: 14px 16px 20px; }
+            .modal .tool-name { font-size: 1.2rem; }
+            .tool-card { padding: 16px; }
+            .tool-card-header { gap: 10px; }
+            .tool-icon, .tool-icon-img { width: 44px; height: 44px; border-radius: 12px; font-size: 1.4rem; }
+            .tool-name { font-size: 1rem; }
+        }
+
+        /* 手机端 */
+        @media (max-width: 480px) {
+            .tools-grid { grid-template-columns: 1fr; gap: 10px; }
+            .tool-actions { flex-direction: column; }
+            .btn { justify-content: center; width: 100%; }
+            .detail-grid { grid-template-columns: 1fr; }
+            .search-box { min-width: 0; flex: 1; }
+            .header-inner { padding: 0 12px; }
+            .logo-sub { display: none; }
+            .logo { gap: 8px; }
+            .logo-icon { width: 32px; height: 32px; font-size: 1rem; border-radius: 8px; }
+            .section-header { gap: 8px; }
+            .sort-btns { width: 100%; justify-content: flex-start; }
+            .sort-btn { font-size: 0.75rem; padding: 4px 10px; }
+            .tool-card { padding: 14px; border-radius: 12px; }
+            .tool-desc { font-size: 0.82rem; }
+            .tool-tag { font-size: 0.68rem; padding: 3px 8px; }
+            .modal-overlay { padding: 8px; }
+            .modal { margin: 0; max-height: 96vh; max-height: 96dvh; border-radius: 12px; }
+            .modal .tool-icon, .modal .tool-icon-img { width: 48px; height: 48px; border-radius: 12px; }
+            .footer { padding: 24px 16px; font-size: 0.75rem; }
+        }
+
+        /* 小屏手机 */
+        @media (max-width: 360px) {
+            .tool-card { padding: 12px; }
+            .tool-name { font-size: 0.95rem; }
+            .tool-desc { font-size: 0.78rem; }
+            .btn-sm { font-size: 0.72rem; padding: 4px 10px; }
+        }
+
+        /* 大屏优化 */
+        @media (min-width: 1600px) {
+            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+            .main-container { max-width: 1500px; }
+            .header-inner { max-width: 1500px; }
+        }
+
+        /* 暗色主题 - 系统偏好 */
+        @media (prefers-color-scheme: dark) {
+            /* 默认就是暗色，无需额外 */
+        }
+        @media (prefers-color-scheme: light) {
+            /* 强制暗色主题 */
+            body { background: var(--bg) !important; color: var(--text) !important; }
+        }
+
+        /* 减少动画偏好 */
+        @media (prefers-reduced-motion: reduce) {
+            .star { animation: none; opacity: 0.3; }
+            .tool-card { transition: none; }
+            .tool-card:hover { transform: none; }
+        }
+
+        /* 触摸设备 */
+        @media (hover: none) and (pointer: coarse) {
+            .tool-card:hover { transform: none; border-color: var(--border); }
+            .tool-card:hover::before { opacity: 0; }
+            .tool-card:active { transform: scale(0.98); background: var(--bg-card-hover); }
+            .btn:active { transform: scale(0.96); }
+            .category-link:active { transform: scale(0.95); }
+        }
+
+        /* 滚动条 */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* 页脚 */
+        .footer {
+            text-align: center; padding: 40px 24px;
+            color: var(--text-muted); font-size: 0.85rem;
+            border-top: 1px solid var(--border); position: relative; z-index: 1;
+            margin-top: 40px;
+        }
+        .footer a { color: var(--accent-light); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+
+    <!-- 头部 -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo" onclick="resetAll()">
+                <div class="logo-icon">🛒</div>
+                <div>
+                    <div>AI超市</div>
+                    <div class="logo-sub">AI TOOLS MARKET</div>
+                </div>
+            </a>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索AI工具名称、分类或功能..." oninput="filterTools()">
+                <button class="search-btn" onclick="filterTools()">🔍</button>
+            </div>
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="header-stat-num" id="totalTools">0</div>
+                    <div class="header-stat-label">收录工具</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-num" id="totalCats">0</div>
+                    <div class="header-stat-label">分类覆盖</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体 -->
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-title">📂 工具分类</div>
+            <ul class="category-list" id="categoryList"></ul>
+        </aside>
+        <main class="content">
+            <div class="section-header">
+                <div class="section-title">
+                    <span id="sectionIcon">🏪</span>
+                    <span id="sectionName">全部工具</span>
+                    <span class="section-count" id="sectionCount">0 个工具</span>
+                </div>
+                <div class="sort-btns">
+                    <button class="sort-btn active" onclick="setSort('default')">📋 默认排序</button>
+                    <button class="sort-btn" onclick="setSort('rating')">⭐ 评分优先</button>
+                    <button class="sort-btn" onclick="setSort('name')">🔤 名称排序</button>
+                </div>
+            </div>
+            <div class="tools-grid" id="toolsGrid"></div>
+            <div class="empty-state" id="emptyState" style="display:none;">
+                <div class="empty-state-icon">🔍</div>
+                <h3>没有找到匹配的工具</h3>
+                <p>试试调整搜索关键词或切换分类筛选</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- 工具详情弹窗 -->
+    <div class="modal-overlay" id="modalOverlay" style="display:none;" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header" id="modalHeader"></div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>AI超市 © 2025 · 收录主流AI工具 · 持续更新中 · 数据来源公开信息整理</p>
+        <p style="margin-top:4px;">本站仅做工具收录和介绍，各工具版权归原作者所有</p>
+    </footer>
+
+    <script>
+        // ============ 数据定义 ============
+        const categories = [
+            { id: 'all', name: '全部工具', icon: '🏪' },
+            { id: 'chatbot', name: 'AI对话助手', icon: '💬' },
+            { id: 'llm', name: '大语言模型', icon: '🧠' },
+            { id: 'image-gen', name: '图像生成', icon: '🎨' },
+            { id: 'image-edit', name: '图像编辑', icon: '✂️' },
+            { id: 'video-gen', name: '视频生成', icon: '🎬' },
+            { id: 'video-edit', name: '视频编辑', icon: '🎞️' },
+            { id: 'voice', name: '语音与音乐', icon: '🎵' },
+            { id: 'writing', name: '写作与文案', icon: '✍️' },
+            { id: 'code', name: '编程开发', icon: '💻' },
+            { id: 'design', name: '设计与创意', icon: '🎯' },
+            { id: 'office', name: '办公效率', icon: '📊' },
+            { id: 'search', name: 'AI搜索研究', icon: '🔬' },
+            { id: 'marketing', name: '营销与销售', icon: '📈' },
+            { id: 'education', name: '教育学习', icon: '📚' },
+            { id: 'ecommerce', name: '电商与商业', icon: '🛍️' },
+            { id: '3d', name: '3D与虚拟制作', icon: '🧊' },
+            { id: 'digital-human', name: '数字人与虚拟形象', icon: '👤' },
+            { id: 'data', name: '数据分析与BI', icon: '📉' },
+            { id: 'automation', name: '自动化与无代码', icon: '⚡' },
+            { id: 'browser', name: '浏览器智能体', icon: '🌐' },
+            { id: 'finance', name: '金融与法律', icon: '⚖️' },
+            { id: 'health', name: '医疗健康', icon: '🏥' },
+            { id: 'hr', name: '人力资源', icon: '👥' },
+            { id: 'translation', name: '翻译与本地化', icon: '🌍' },
+            { id: 'pdf', name: 'PDF与文档处理', icon: '📄' },
+        ];
+
+        const tools = [
+            // ===== AI对话助手 =====
+            { id:1, name:'ChatGPT', vendor:'OpenAI', cat:'chatbot', rating:4.9, desc:'全球最流行的AI对话助手，支持文本、图像、音频多模态交互。适用于写作、编程、学习、创意等全场景。', features:['GPT-4o多模态模型','支持文件上传分析','插件生态丰富','语音对话功能','DALL·E图像生成集成'], pricing:'免费 + Plus $20/月 + Pro $200/月', website:'https://chat.openai.com', tags:['热门','多模态','免费'], hot:true, free:true },
+            { id:2, name:'Claude', vendor:'Anthropic', cat:'chatbot', rating:4.8, desc:'注重安全性和深度推理的AI助手，支持超长上下文和文件分析。擅长复杂推理、代码生成和长文档处理。', features:['200K超长上下文','Artifacts实时预览','多文档对比分析','代码解释与生成','Project知识库'], pricing:'免费 + Pro $20/月 + Team $25/人/月', website:'https://claude.ai', tags:['热门','长上下文'], hot:true, free:true },
+            { id:3, name:'DeepSeek', vendor:'深度求索', cat:'chatbot', rating:4.7, desc:'国产开源大模型，推理能力出色，支持联网搜索和文件上传。性价比极高的AI对话选择。', features:['DeepSeek-R1推理模型','联网搜索','文件上传分析','开源可部署','中文能力出色'], pricing:'免费', website:'https://chat.deepseek.com', tags:['国产','开源','免费'], hot:true, free:true },
+            { id:4, name:'Kimi', vendor:'月之暗面', cat:'chatbot', rating:4.6, desc:'国产AI助手，超长上下文窗口，擅长长文档阅读和网页内容解析。支持多种文件格式上传分析。', features:['超长上下文窗口','网页链接解析','多文件格式支持','专业报告生成','浏览器插件'], pricing:'免费', website:'https://kimi.moonshot.cn', tags:['国产','免费','长文档'], hot:true, free:true },
+            { id:5, name:'豆包', vendor:'字节跳动', cat:'chatbot', rating:4.5, desc:'字节跳动推出的AI对话助手，集成在抖音等生态中，提供多模态交互和智能体功能。', features:['多模态交互','智能体生态','语音对话','图片生成','与抖音生态联动'], pricing:'免费', website:'https://www.doubao.com', tags:['国产','免费','多模态'], free:true },
+            { id:6, name:'通义千问', vendor:'阿里巴巴', cat:'chatbot', rating:4.4, desc:'阿里云推出的AI助手，支持多轮对话、代码生成、文档处理等，与企业办公场景深度整合。', features:['多轮对话','代码生成','文档智能处理','图片理解','钉钉集成'], pricing:'免费 + 企业版', website:'https://tongyi.aliyun.com', tags:['国产','免费'], free:true },
+            { id:7, name:'文心一言', vendor:'百度', cat:'chatbot', rating:4.3, desc:'百度推出的知识增强大语言模型对话产品，依托百度搜索生态，在中文知识问答方面有优势。', features:['知识增强','百度搜索整合','多模态理解','插件生态','API开放'], pricing:'免费 + 专业版', website:'https://yiyan.baidu.com', tags:['国产','免费'], free:true },
+            { id:8, name:'Gemini', vendor:'Google', cat:'chatbot', rating:4.5, desc:'Google多模态AI助手，深度整合Google生态（Gmail、Docs、YouTube等），支持文本、图像、音频交互。', features:['Google生态整合','多模态理解','Gmail/Docs集成','YouTube分析','Gemini Advanced'], pricing:'免费 + Advanced $19.99/月', website:'https://gemini.google.com', tags:['热门','多模态','免费'], hot:true, free:true },
+
+            // ===== 大语言模型 =====
+            { id:9, name:'GPT-4o', vendor:'OpenAI', cat:'llm', rating:4.9, desc:'OpenAI最新多模态旗舰模型，支持文本、图像、音频输入输出，速度快且成本更低。', features:['多模态输入输出','低延迟响应','视觉理解','多语言支持','函数调用'], pricing:'API按量计费', website:'https://platform.openai.com', tags:['热门','多模态','API'], hot:true },
+            { id:10, name:'Claude 3.5 Sonnet', vendor:'Anthropic', cat:'llm', rating:4.8, desc:'Anthropic最智能模型，在推理、知识和编码能力方面表现出色，支持200K上下文。', features:['200K上下文','强推理能力','代码生成优秀','安全对齐','工具使用'], pricing:'API按量计费', website:'https://www.anthropic.com', tags:['热门','API'], hot:true },
+            { id:11, name:'Llama 3', vendor:'Meta', cat:'llm', rating:4.5, desc:'Meta开源的先进大语言模型，提供8B和70B参数版本，可本地部署和微调。', features:['开源免费','可本地部署','支持微调','社区生态丰富','多语言支持'], pricing:'免费开源', website:'https://llama.meta.com', tags:['开源','本地部署'], free:true },
+            { id:12, name:'DeepSeek-R1', vendor:'深度求索', cat:'llm', rating:4.7, desc:'国产开源推理模型，采用强化学习训练，推理链清晰，在数学和编程任务中表现出色。', features:['强化学习训练','推理链可视化','数学能力出色','代码能力强','开源可商用'], pricing:'免费开源 + API', website:'https://deepseek.com', tags:['国产','开源','推理'], hot:true, free:true },
+            { id:13, name:'Qwen2.5', vendor:'阿里巴巴', cat:'llm', rating:4.4, desc:'阿里通义千问系列开源模型，覆盖多种参数规模，在中文理解和生成方面表现优秀。', features:['多参数版本','中文能力优秀','开源可商用','多语言','工具调用'], pricing:'免费开源 + API', website:'https://tongyi.aliyun.com', tags:['国产','开源'], free:true },
+
+            // ===== 图像生成 =====
+            { id:14, name:'Midjourney', vendor:'Midjourney Inc.', cat:'image-gen', rating:4.8, desc:'最受欢迎的艺术风格AI图像生成工具，以高品质、艺术感和精细控制著称。通过Discord使用。', features:['高品质艺术风格','精细参数控制','风格参考功能','角色一致性','Vary Region局部重绘'], pricing:'Basic $10/月 + Standard $30/月', website:'https://www.midjourney.com', tags:['热门','艺术风格'], hot:true },
+            { id:15, name:'DALL·E 3', vendor:'OpenAI', cat:'image-gen', rating:4.6, desc:'OpenAI的图像生成模型，集成在ChatGPT中，理解自然语言描述能力强，构图精准。', features:['自然语言理解','精准构图','ChatGPT集成','安全审核','多风格支持'], pricing:'ChatGPT Plus包含 + API', website:'https://openai.com/dall-e-3', tags:['热门','易用'], hot:true },
+            { id:16, name:'Stable Diffusion', vendor:'Stability AI', cat:'image-gen', rating:4.5, desc:'最流行的开源图像生成模型，可本地部署运行，社区生态丰富，模型和插件众多。', features:['开源免费','本地部署','海量社区模型','ControlNet精准控制','LoRA微调'], pricing:'免费开源 + 云端API', website:'https://stability.ai', tags:['开源','本地部署','社区'], free:true },
+            { id:17, name:'Adobe Firefly', vendor:'Adobe', cat:'image-gen', rating:4.3, desc:'Adobe推出的AI图像生成工具，深度整合Photoshop等创意工具，专注商用安全。', features:['Adobe生态整合','商用版权安全','Photoshop集成','生成式填充','文字效果生成'], pricing:'免费基础 + Creative Cloud', website:'https://firefly.adobe.com', tags:['商用安全','Adobe'], free:true },
+            { id:18, name:'可灵(Kling)', vendor:'快手', cat:'image-gen', rating:4.2, desc:'快手推出的AI视觉生成平台，支持文生图和图生视频，在中文理解和亚洲风格方面表现优秀。', features:['文生图','图生视频','中文理解好','亚洲风格','快速生成'], pricing:'免费 + 会员', website:'https://kling.kuaishou.com', tags:['国产','免费'], free:true },
+
+            // ===== 图像编辑 =====
+            { id:19, name:'Remove.bg', vendor:'Kaleido', cat:'image-edit', rating:4.7, desc:'一键去除图片背景的AI工具，处理速度快且边缘精细，支持批量处理和API调用。', features:['一键去背景','边缘精细处理','批量处理','API集成','支持高清输出'], pricing:'免费 + 按量付费', website:'https://www.remove.bg', tags:['实用','免费'], free:true },
+            { id:20, name:'Canva', vendor:'Canva', cat:'image-edit', rating:4.6, desc:'全球流行的在线设计平台，集成AI图像编辑、生成和设计功能，模板丰富，上手简单。', features:['AI图像生成','智能抠图','Magic Write写作','海量模板','团队协作'], pricing:'免费 + Pro $12.99/月', website:'https://www.canva.com', tags:['热门','设计','免费'], hot:true, free:true },
+            { id:21, name:'Topaz Photo AI', vendor:'Topaz Labs', cat:'image-edit', rating:4.5, desc:'专业AI图像增强软件，自动去噪、锐化、放大分辨率，适合摄影后期处理。', features:['AI降噪','AI锐化','超分辨率放大','面部恢复','批量处理'], pricing:'$199 一次性购买', website:'https://www.topazlabs.com', tags:['专业','付费'] },
+
+            // ===== 视频生成 =====
+            { id:22, name:'Sora', vendor:'OpenAI', cat:'video-gen', rating:4.7, desc:'OpenAI的革命性文生视频模型，可从文本生成逼真视频，支持最长60秒视频生成。', features:['文本生成视频','逼真物理效果','最长60秒','多镜头','风格多样'], pricing:'ChatGPT Plus/Pro 包含', website:'https://openai.com/sora', tags:['热门','革命性'], hot:true },
+            { id:23, name:'Runway Gen-3', vendor:'Runway', cat:'video-gen', rating:4.5, desc:'专业AI视频生成和编辑平台，支持文生视频、图生视频和视频风格转换，影视级品质。', features:['文生视频','图生视频','视频风格转换','运动笔刷','实时预览'], pricing:'免费试用 + $15/月起', website:'https://runwayml.com', tags:['热门','专业'], hot:true, free:true },
+            { id:24, name:'Synthesia', vendor:'Synthesia', cat:'video-gen', rating:4.4, desc:'AI数字人视频生成平台，用AI虚拟人物制作专业视频，支持140+语言和多模板。', features:['AI数字人','140+语言','模板丰富','自动字幕','团队协作'], pricing:'Starter $22/月', website:'https://www.synthesia.io', tags:['数字人','企业'] },
+            { id:25, name:'Pika', vendor:'Pika Labs', cat:'video-gen', rating:4.3, desc:'新兴AI视频生成工具，支持文生视频和图生视频，以创意特效和趣味性著称。', features:['文生视频','图生视频','创意特效','Lip Sync口型同步','视频扩展'], pricing:'免费 + 付费', website:'https://pika.art', tags:['创意','免费'], free:true },
+            { id:26, name:'可灵(Kling)视频', vendor:'快手', cat:'video-gen', rating:4.2, desc:'快手推出的AI视频生成功能，支持文生视频和图生视频，生成质量在国产工具中领先。', features:['文生视频','图生视频','物理模拟','运镜控制','1080P输出'], pricing:'免费 + 会员', website:'https://kling.kuaishou.com', tags:['国产','免费'], free:true },
+
+            // ===== 视频编辑 =====
+            { id:27, name:'Descript', vendor:'Descript', cat:'video-edit', rating:4.6, desc:'革命性的音视频编辑工具，通过编辑文本来编辑视频，AI自动转录和去除填充词。', features:['文本编辑视频','AI转录','填充词移除','AI配音','屏幕录制'], pricing:'免费 + Pro $24/月', website:'https://www.descript.com', tags:['创新','编辑'], free:true },
+            { id:28, name:'CapCut(剪映)', vendor:'字节跳动', cat:'video-edit', rating:4.5, desc:'字节跳动旗下免费视频编辑工具，AI功能丰富，包括自动字幕、AI调色和特效模板。', features:['AI自动字幕','AI调色','海量模板','AI配音','多端同步'], pricing:'免费 + Pro', website:'https://www.capcut.com', tags:['免费','热门'], hot:true, free:true },
+
+            // ===== 语音与音乐 =====
+            { id:29, name:'ElevenLabs', vendor:'ElevenLabs', cat:'voice', rating:4.7, desc:'最先进的AI语音合成和克隆平台，生成自然情感化的语音，适用于播客、有声书和视频配音。', features:['自然情感语音','声音克隆','多语言支持','API集成','语音设计'], pricing:'免费 + Starter $5/月', website:'https://elevenlabs.io', tags:['热门','语音合成'], hot:true, free:true },
+            { id:30, name:'Suno AI', vendor:'Suno', cat:'voice', rating:4.6, desc:'AI音乐生成平台，从文本提示创建完整歌曲（含歌词、旋律、伴奏），适合创作者和爱好者。', features:['文本生成音乐','完整歌曲创作','多风格支持','歌词生成','高品质输出'], pricing:'免费 + Pro $10/月', website:'https://suno.ai', tags:['热门','音乐'], hot:true, free:true },
+            { id:31, name:'AIVA', vendor:'AIVA', cat:'voice', rating:4.2, desc:'AI古典音乐和影视配乐作曲工具，可生成免版税音乐，适合电影、游戏和广告配乐。', features:['AI作曲','免版税音乐','多风格','影视配乐','游戏音乐'], pricing:'免费 + Pro €15/月', website:'https://www.aiva.ai', tags:['作曲','免版税'], free:true },
+            { id:32, name:'Otter.ai', vendor:'Otter.ai', cat:'voice', rating:4.4, desc:'AI会议转录助手，实时转录会议内容，自动生成摘要和行动项，支持Zoom/Teams/Meet。', features:['实时转录','AI摘要','行动项提取','会议集成','搜索回放'], pricing:'免费 + Pro $16.99/月', website:'https://otter.ai', tags:['会议','免费'], free:true },
+
+            // ===== 写作与文案 =====
+            { id:33, name:'Jasper.ai', vendor:'Jasper', cat:'writing', rating:4.4, desc:'AI内容创作平台，擅长营销文案、博客文章和社交媒体内容生成，提供品牌声音定制。', features:['营销文案生成','品牌声音定制','SEO优化','多语言支持','团队协作'], pricing:'Creator $49/月 + Pro $69/月', website:'https://www.jasper.ai', tags:['营销','专业'] },
+            { id:34, name:'Grammarly', vendor:'Grammarly', cat:'writing', rating:4.6, desc:'AI写作助手，提供语法检查、风格建议、语气调整和查重功能，支持多种平台集成。', features:['语法检查','语气调整','风格建议','抄袭检测','全平台集成'], pricing:'免费 + Premium $12/月', website:'https://www.grammarly.com', tags:['写作','免费'], free:true },
+            { id:35, name:'Notion AI', vendor:'Notion', cat:'writing', rating:4.3, desc:'集成在Notion中的AI写作助手，支持文档生成、摘要、翻译和头脑风暴，提升工作效率。', features:['文档生成','内容摘要','翻译','头脑风暴','Notion深度集成'], pricing:'$10/月（附加）', website:'https://www.notion.so', tags:['写作','协作'] },
+            { id:36, name:'Copy.ai', vendor:'Copy.ai', cat:'writing', rating:4.2, desc:'AI营销文案生成工具，专注电商、社交媒体和广告文案，模板驱动，快速产出。', features:['模板驱动','电商文案','社交媒体','广告文案','批量生成'], pricing:'免费 + Pro $49/月', website:'https://www.copy.ai', tags:['营销','免费'], free:true },
+
+            // ===== 编程开发 =====
+            { id:37, name:'GitHub Copilot', vendor:'GitHub/Microsoft', cat:'code', rating:4.7, desc:'最流行的AI编程助手，深度集成VS Code和JetBrains等IDE，提供上下文感知的代码补全。', features:['代码自动补全','多语言支持','IDE深度集成','Chat对话编程','代码解释'], pricing:'Individual $10/月 + Business $19/月', website:'https://github.com/features/copilot', tags:['热门','编程必备'], hot:true },
+            { id:38, name:'Cursor', vendor:'Anysphere', cat:'code', rating:4.8, desc:'新一代AI原生代码编辑器，基于VS Code，深度集成AI，支持对话式编程和代码库理解。', features:['AI原生编辑器','代码库全局理解','对话式编程','多模型支持','代码生成与重构'], pricing:'免费 + Pro $20/月', website:'https://cursor.sh', tags:['热门','新一代'], hot:true, free:true },
+            { id:39, name:'Replit', vendor:'Replit', cat:'code', rating:4.3, desc:'AI驱动的在线IDE和开发平台，从自然语言描述直接生成应用，支持一键部署。', features:['自然语言生成应用','在线IDE','一键部署','团队协作','多语言支持'], pricing:'免费 + Pro $25/月', website:'https://replit.com', tags:['在线','部署'], free:true },
+            { id:40, name:'Windsurf', vendor:'Codeium', cat:'code', rating:4.5, desc:'Codeium推出的AI原生IDE，支持Flow模式的自动编程，上下文理解能力强。', features:['Flow自动编程模式','多文件编辑','Cascade上下文','代码补全','多IDE支持'], pricing:'免费 + Pro $15/月', website:'https://codeium.com/windsurf', tags:['热门','免费'], hot:true, free:true },
+
+            // ===== 设计与创意 =====
+            { id:41, name:'Figma AI', vendor:'Figma', cat:'design', rating:4.5, desc:'Figma集成的AI设计功能，自动布局、设计建议、AI生成内容和原型，提升UI/UX设计效率。', features:['AI自动布局','设计建议','AI生成内容','智能组件','团队协作'], pricing:'免费 + Pro $12/月', website:'https://www.figma.com', tags:['设计','协作'], free:true },
+            { id:42, name:'Beautiful.ai', vendor:'Beautiful.ai', cat:'design', rating:4.3, desc:'AI驱动的演示文稿制作工具，智能模板和自动布局，让PPT设计变得简单高效。', features:['智能模板','自动布局','品牌定制','团队协作','数据可视化'], pricing:'Pro $12/月', website:'https://www.beautiful.ai', tags:['PPT','演示'] },
+            { id:43, name:'Looka', vendor:'Looka', cat:'design', rating:4.2, desc:'AI品牌设计工具，根据偏好自动生成Logo、品牌色和VI物料，适合创业团队。', features:['AI Logo生成','品牌配色','VI物料','名片设计','品牌指南'], pricing:'$20一次性购买Logo', website:'https://looka.com', tags:['品牌','Logo'] },
+
+            // ===== 办公效率 =====
+            { id:44, name:'Notion AI', vendor:'Notion', cat:'office', rating:4.4, desc:'Notion集成AI功能，支持智能写作、自动摘要、数据库分析和任务管理，一站式工作空间。', features:['智能写作','自动摘要','数据库AI分析','知识库管理','项目管理'], pricing:'$10/月（AI附加）', website:'https://www.notion.so', tags:['办公','协作'] },
+            { id:45, name:'Gamma', vendor:'Gamma', cat:'office', rating:4.4, desc:'AI驱动的文档和演示文稿创建工具，从一句话生成完整PPT、文档或网页，效果精美。', features:['一句话生成PPT','文档生成','网页生成','精美模板','实时协作'], pricing:'免费 + Plus $10/月', website:'https://gamma.app', tags:['热门','PPT'], hot:true, free:true },
+            { id:46, name:'Fireflies.ai', vendor:'Fireflies', cat:'office', rating:4.3, desc:'AI会议助手，自动加入会议转录、生成摘要和行动项，支持主流会议平台。', features:['自动加入会议','转录和摘要','行动项提取','会议搜索','CRM集成'], pricing:'免费 + Pro $18/月', website:'https://fireflies.ai', tags:['会议','免费'], free:true },
+            { id:47, name:'Zapier', vendor:'Zapier', cat:'office', rating:4.5, desc:'AI自动化工作流平台，连接7000+应用，自动执行重复任务，无需编程。', features:['7000+应用集成','AI工作流','自然语言创建','多步骤自动化','条件逻辑'], pricing:'免费 + Starter $19.99/月', website:'https://zapier.com', tags:['自动化','免费'], free:true },
+
+            // ===== AI搜索研究 =====
+            { id:48, name:'Perplexity AI', vendor:'Perplexity', cat:'search', rating:4.6, desc:'AI驱动的搜索引擎，提供带来源引用的准确答案，支持深度研究和多轮追问。', features:['来源引用','深度研究','多轮追问','文件分析','Pro搜索'], pricing:'免费 + Pro $20/月', website:'https://www.perplexity.ai', tags:['热门','搜索'], hot:true, free:true },
+            { id:49, name:'秘塔AI搜索', vendor:'秘塔科技', cat:'search', rating:4.4, desc:'国产AI搜索引擎，无广告、直达结果，支持学术搜索和深度研究模式。', features:['无广告搜索','学术搜索','深度研究','脑图展示','来源标注'], pricing:'免费', website:'https://metaso.cn', tags:['国产','免费'], free:true },
+            { id:50, name:'天工AI', vendor:'昆仑万维', cat:'search', rating:4.2, desc:'昆仑万维推出的AI搜索助手，支持联网搜索、文档分析和多模态理解。', features:['联网搜索','文档分析','多模态','对话式搜索','知识图谱'], pricing:'免费', website:'https://www.tiangong.cn', tags:['国产','免费'], free:true },
+
+            // ===== 营销与销售 =====
+            { id:51, name:'AdCreative.ai', vendor:'AdCreative', cat:'marketing', rating:4.3, desc:'AI广告创意生成平台，快速生成高转化广告素材和文案，支持多平台格式。', features:['广告创意生成','多平台格式','A/B测试','转化预测','品牌模板'], pricing:'Starter $29/月', website:'https://www.adcreative.ai', tags:['广告','营销'] },
+            { id:52, name:'Hootsuite', vendor:'Hootsuite', cat:'marketing', rating:4.2, desc:'社交媒体管理平台，集成AI内容创作、排期发布和数据分析功能。', features:['AI内容创作','排期发布','数据分析','多平台管理','团队协作'], pricing:'Professional $99/月', website:'https://www.hootsuite.com', tags:['社媒','管理'] },
+
+            // ===== 教育学习 =====
+            { id:53, name:'Duolingo', vendor:'Duolingo', cat:'education', rating:4.7, desc:'全球最流行的语言学习应用，AI自适应学习算法个性化教学，游戏化体验。', features:['AI自适应学习','游戏化教学','40+语言','口语练习','学习路径个性化'], pricing:'免费 + Super $6.99/月', website:'https://www.duolingo.com', tags:['热门','免费'], hot:true, free:true },
+            { id:54, name:'Quizlet', vendor:'Quizlet', cat:'education', rating:4.4, desc:'AI驱动的学习工具，自动生成闪卡、测验和学习计划，支持多种学习模式。', features:['AI闪卡生成','智能测验','学习计划','Q-Chat AI导师','记忆曲线优化'], pricing:'免费 + Plus $7.99/月', website:'https://quizlet.com', tags:['学习','免费'], free:true },
+
+            // ===== 电商与商业 =====
+            { id:55, name:'Salesforce Einstein', vendor:'Salesforce', cat:'ecommerce', rating:4.4, desc:'Salesforce的AI层，嵌入CRM全流程，提供预测分析、客户洞察和智能推荐。', features:['预测分析','客户洞察','智能推荐','自动化工作流','自然语言查询'], pricing:'Salesforce附加功能', website:'https://www.salesforce.com/einstein', tags:['CRM','企业'] },
+            { id:56, name:'Shopify Magic', vendor:'Shopify', cat:'ecommerce', rating:4.3, desc:'Shopify集成的AI电商工具，自动生成产品描述、图片编辑和客户服务。', features:['产品描述生成','AI图片编辑','智能客服','邮件营销','数据分析'], pricing:'Shopify套餐包含', website:'https://www.shopify.com/magic', tags:['电商','免费'], free:true },
+            { id:57, name:'Semrush', vendor:'Semrush', cat:'ecommerce', rating:4.5, desc:'全能数字营销平台，AI驱动SEO、内容营销、竞品分析和广告优化。', features:['SEO优化','竞品分析','内容营销','广告优化','社媒管理'], pricing:'Pro $129.95/月', website:'https://www.semrush.com', tags:['SEO','营销'] },
+
+            // ===== AI对话助手 补充 =====
+            { id:58, name:'讯飞星火', vendor:'科大讯飞', cat:'chatbot', rating:4.3, desc:'科大讯飞推出的AI对话助手，语音识别和合成能力行业领先，教育场景深耕。', features:['语音识别领先','多模态交互','教育场景','API开放','行业方案'], pricing:'免费 + 企业版', website:'https://xinghuo.xfyun.cn', tags:['国产','免费','语音'], free:true },
+            { id:59, name:'智谱清言', vendor:'智谱AI', cat:'chatbot', rating:4.3, desc:'基于GLM大模型的AI对话产品，支持代码生成、文档处理和联网搜索。', features:['GLM大模型','代码生成','文档处理','联网搜索','智能体'], pricing:'免费', website:'https://chatglm.cn', tags:['国产','免费'], free:true },
+            { id:60, name:'Poe', vendor:'Quora', cat:'chatbot', rating:4.4, desc:'Quora的多模型聚合AI平台，一个界面使用ChatGPT、Claude、Gemini等多种模型。', features:['多模型聚合','自定义Bot','模型对比','社区分享','API'], pricing:'免费 + $19.99/月', website:'https://poe.com', tags:['多模型','免费'], free:true },
+            { id:61, name:'Grok', vendor:'xAI', cat:'chatbot', rating:4.3, desc:'Elon Musk旗下xAI推出的AI助手，实时信息获取，风格幽默直率。', features:['实时信息','幽默风格','X平台集成','图像生成','长上下文'], pricing:'免费 + Premium', website:'https://x.ai', tags:['实时','免费'], free:true },
+
+            // ===== 大语言模型 补充 =====
+            { id:62, name:'Mistral Large', vendor:'Mistral AI', cat:'llm', rating:4.5, desc:'欧洲领先AI公司Mistral的旗舰模型，多语言能力出色，支持函数调用和JSON模式。', features:['多语言优秀','函数调用','JSON模式','128K上下文','低延迟'], pricing:'API按量计费', website:'https://mistral.ai', tags:['欧洲','API'] },
+            { id:63, name:'Gemini 2.5 Pro', vendor:'Google', cat:'llm', rating:4.8, desc:'Google最强推理模型，100万token上下文，深度集成Google Workspace。', features:['100万token','推理能力','Google Workspace','多模态','代码生成'], pricing:'API按量计费', website:'https://deepmind.google', tags:['热门','推理'], hot:true },
+            { id:64, name:'Qwen3', vendor:'阿里巴巴', cat:'llm', rating:4.5, desc:'阿里最新大模型系列，支持MoE架构和多语言推理，开源可商用。', features:['MoE架构','多语言','开源可商用','工具调用','多模态'], pricing:'免费开源 + API', website:'https://qwenlm.github.io', tags:['国产','开源'], free:true },
+            { id:65, name:'GLM-4', vendor:'智谱AI', cat:'llm', rating:4.4, desc:'智谱AI的GLM系列最新模型，中英双语能力均衡，支持128K上下文和工具调用。', features:['中英双语','128K上下文','工具调用','代码生成','多模态'], pricing:'免费开源 + API', website:'https://open.bigmodel.cn', tags:['国产','开源'], free:true },
+            { id:66, name:'Yi-Lightning', vendor:'零一万物', cat:'llm', rating:4.2, desc:'零一万物的高性能低价大模型，推理速度快，中文场景表现出色。', features:['高性价比','快速推理','中文优秀','多场景','API'], pricing:'API按量计费（低价）', website:'https://www.lingyiwanwu.com', tags:['国产','高性价比'] },
+
+            // ===== 图像生成 补充 =====
+            { id:67, name:'Ideogram 3.0', vendor:'Ideogram', cat:'image-gen', rating:4.5, desc:'以精准文字渲染著称的AI图像生成器，可创建带文字的逼真视觉效果。', features:['精准文字渲染','逼真视觉','自定义风格','创意设计','品牌素材'], pricing:'免费 + Pro $20/月', website:'https://ideogram.ai', tags:['文字渲染','免费'], free:true },
+            { id:68, name:'Leonardo AI', vendor:'Leonardo AI', cat:'image-gen', rating:4.4, desc:'AI图像生成和编辑平台，游戏资产创作首选，支持模型训练和实时画布。', features:['游戏资产','模型训练','实时画布','批量生成','社区模型'], pricing:'免费 + Pro $12/月', website:'https://leonardo.ai', tags:['游戏','免费'], free:true },
+            { id:69, name:'即梦AI', vendor:'字节跳动', cat:'image-gen', rating:4.3, desc:'字节跳动AI图像和视频生成平台，支持文生图、图生图和风格转换。', features:['文生图','图生图','风格转换','视频生成','中文优化'], pricing:'免费 + 会员', website:'https://jimeng.jianying.com', tags:['国产','免费'], free:true },
+            { id:70, name:'SeaArt', vendor:'SeaArt', cat:'image-gen', rating:4.2, desc:'免费AI绘画平台，海量模型和LoRA，支持ControlNet精细控制。', features:['海量模型','LoRA支持','ControlNet','免费使用','社区活跃'], pricing:'免费 + 会员', website:'https://www.seaart.ai', tags:['免费','社区'], free:true },
+
+            // ===== 图像编辑 补充 =====
+            { id:71, name:'Clipdrop', vendor:'Jasper/Stability AI', cat:'image-edit', rating:4.4, desc:'AI图像编辑工具套件，一键去背景、智能打光、超分辨率放大和物体替换。', features:['去背景','智能打光','超分辨率','物体替换','API集成'], pricing:'免费 + Pro', website:'https://clipdrop.co', tags:['编辑','免费'], free:true },
+            { id:72, name:'Pixelcut', vendor:'Pixelcut', cat:'image-edit', rating:4.2, desc:'AI电商图片编辑工具，一键去背景、生成产品场景图，适合电商卖家。', features:['去背景','场景生成','产品图','批量处理','模板'], pricing:'免费 + Pro $9.99/月', website:'https://www.pixelcut.ai', tags:['电商','免费'], free:true },
+            { id:73, name:'Photoroom', vendor:'Photoroom', cat:'image-edit', rating:4.3, desc:'AI产品摄影和图片编辑，手机端即可创建专业产品图，电商必备。', features:['产品摄影','背景替换','AI场景','手机端','批量编辑'], pricing:'免费 + Pro $9.99/月', website:'https://www.photoroom.com', tags:['电商','免费'], free:true },
+
+            // ===== 视频生成 补充 =====
+            { id:74, name:'Vidu', vendor:'生数科技', cat:'video-gen', rating:4.4, desc:'国产AI视频生成平台，清华系团队打造，视觉效果清晰，支持多种风格。', features:['文生视频','图生视频','多风格','清晰画质','快速生成'], pricing:'免费 + 会员', website:'https://www.vidu.com', tags:['国产','免费'], free:true },
+            { id:75, name:'Pixverse', vendor:'Pixverse', cat:'video-gen', rating:4.3, desc:'AI视频生成平台，电影级输出，20+相机控制，多参考元素融合。', features:['电影级画质','20+相机控制','多元素融合','快速生成','社区'], pricing:'免费 + Pro', website:'https://app.pixverse.ai', tags:['视频','免费'], free:true },
+            { id:76, name:'Luma Ray2', vendor:'Luma AI', cat:'video-gen', rating:4.4, desc:'Luma AI物理感知视频生成器，模拟真实世界物理效果，画质惊艳。', features:['物理感知','真实画质','文生视频','图生视频','相机控制'], pricing:'免费 + Pro', website:'https://lumalabs.ai', tags:['视频','免费'], free:true },
+            { id:77, name:'Hailuo AI', vendor:'MiniMax', cat:'video-gen', rating:4.3, desc:'MiniMax海螺AI视频生成，指令遵循能力最强，原生1080p输出。', features:['指令遵循','1080p原生','文生视频','图生视频','快速生成'], pricing:'免费 + 会员', website:'https://hailuoai.video', tags:['国产','免费'], free:true },
+            { id:78, name:'腾讯混元视频', vendor:'腾讯', cat:'video-gen', rating:4.2, desc:'腾讯混元大模型的AI视频生成能力，图生视频运动一致性和真实感强。', features:['图生视频','运动一致性','真实感','微信生态','免费使用'], pricing:'免费', website:'https://aivideo.hunyuan.tencent.com', tags:['国产','免费'], free:true },
+
+            // ===== 语音与音乐 补充 =====
+            { id:79, name:'Riffusion', vendor:'Riffusion', cat:'voice', rating:4.3, desc:'AI音乐生成平台(FUZZ)，无限生成歌曲，可混音现有曲目，创意性强。', features:['无限生成','混音功能','多风格','实时生成','社区分享'], pricing:'免费 + Pro', website:'https://www.riffusion.com', tags:['音乐','免费'], free:true },
+            { id:80, name:'Murf AI', vendor:'Murf', cat:'voice', rating:4.4, desc:'专业AI语音配音平台，120+逼真AI声音，20+语言，适合视频配音和课件。', features:['120+声音','20+语言','专业配音','音视频同步','团队协作'], pricing:'免费 + Pro $29/月', website:'https://murf.ai', tags:['配音','免费'], free:true },
+            { id:81, name:'Play.ht', vendor:'Play.ht', cat:'voice', rating:4.3, desc:'AI语音合成平台，超逼真TTS，支持多语言和声音克隆，适合内容创作。', features:['超逼真TTS','多语言','声音克隆','API集成','播客制作'], pricing:'免费 + Pro $39/月', website:'https://play.ht', tags:['TTS','免费'], free:true },
+            { id:82, name:'讯飞智作', vendor:'科大讯飞', cat:'voice', rating:4.3, desc:'科大讯飞AI配音和虚拟主播平台，中文语音合成质量最高，行业应用广泛。', features:['中文配音最佳','虚拟主播','多音色','多语言','行业方案'], pricing:'免费 + 企业版', website:'https://www.xfyun.cn', tags:['国产','配音','免费'], free:true },
+
+            // ===== 写作与文案 补充 =====
+            { id:83, name:'Wordtune', vendor:'AI21 Labs', cat:'writing', rating:4.3, desc:'AI写作增强工具，上下文重写和语气检测，提供多种改写建议。', features:['上下文重写','语气检测','多改写建议','摘要生成','浏览器插件'], pricing:'免费 + Pro $24.99/月', website:'https://www.wordtune.com', tags:['写作','免费'], free:true },
+            { id:84, name:'秘塔写作猫', vendor:'秘塔科技', cat:'writing', rating:4.3, desc:'国产AI写作助手，支持中英文写作纠错、润色和翻译，中文优化出色。', features:['中英文纠错','AI润色','翻译','改写','浏览器插件'], pricing:'免费 + 会员', website:'https://xiezuocat.com', tags:['国产','写作','免费'], free:true },
+            { id:85, name:'Writesonic', vendor:'Writesonic', cat:'writing', rating:4.2, desc:'AI内容营销平台，一键生成SEO文章、广告文案和落地页内容。', features:['SEO文章','广告文案','落地页','AI Chat','品牌声音'], pricing:'免费 + Pro $19/月', website:'https://writesonic.com', tags:['营销','免费'], free:true },
+            { id:86, name:'Rytr', vendor:'Rytr', cat:'writing', rating:4.1, desc:'高性价比AI写作工具，40+用例模板，支持30+语言，适合个人创作者。', features:['40+模板','30+语言','SEO分析','语气控制','高性价比'], pricing:'免费 + Saver $9/月', website:'https://rytr.me', tags:['写作','高性价比','免费'], free:true },
+
+            // ===== 编程开发 补充 =====
+            { id:87, name:'Trae AI IDE', vendor:'字节跳动', cat:'code', rating:4.4, desc:'字节跳动推出的AI原生IDE，基于VS Code，深度集成AI编程能力，中文友好。', features:['AI原生IDE','中文友好','代码生成','智能补全','Git集成'], pricing:'免费', website:'https://www.trae.ai', tags:['国产','免费'], free:true },
+            { id:88, name:'通义灵码', vendor:'阿里巴巴', cat:'code', rating:4.3, desc:'阿里推出的AI编程助手，支持VS Code/JetBrains，中文代码理解和生成出色。', features:['代码补全','中文理解','VS Code集成','JetBrains集成','免费使用'], pricing:'免费', website:'https://tongyi.aliyun.com/lingma', tags:['国产','免费'], free:true },
+            { id:89, name:'CodeBuddy', vendor:'腾讯云', cat:'code', rating:4.3, desc:'腾讯云AI代码助手，支持多IDE，代码生成、补全和智能对话编程。', features:['代码生成','智能补全','对话编程','多IDE支持','中文优化'], pricing:'免费', website:'https://copilot.tencent.com', tags:['国产','免费'], free:true },
+            { id:90, name:'v0 by Vercel', vendor:'Vercel', cat:'code', rating:4.4, desc:'Vercel推出的AI UI生成工具，自然语言描述生成React/Next.js前端代码。', features:['UI代码生成','React/Next.js','自然语言','即时预览','组件生成'], pricing:'免费 + Pro $20/月', website:'https://v0.dev', tags:['前端','免费'], free:true },
+            { id:91, name:'Bolt.new', vendor:'StackBlitz', cat:'code', rating:4.3, desc:'AI驱动的全栈Web应用生成器，在浏览器中从描述直接生成可部署应用。', features:['全栈生成','浏览器IDE','一键部署','即时预览','多框架支持'], pricing:'免费 + Pro $20/月', website:'https://bolt.new', tags:['全栈','免费'], free:true },
+            { id:92, name:'Lovable', vendor:'Lovable', cat:'code', rating:4.3, desc:'AI应用构建平台(GPT Engineer)，从描述生成完整Web应用，支持Supabase后端。', features:['应用生成','Supabase后端','即时部署','可视化编辑','GitHub同步'], pricing:'免费 + Pro $20/月', website:'https://lovable.dev', tags:['应用构建','免费'], free:true },
+            { id:93, name:'Claude Code', vendor:'Anthropic', cat:'code', rating:4.6, desc:'Anthropic终端AI编程工具，映射代码库、自动压缩上下文、运行命令和编辑文件。', features:['终端编程','代码库映射','上下文压缩','命令执行','文件编辑'], pricing:'API按量计费', website:'https://claude.com/product/claude-code', tags:['终端','编程','热门'], hot:true },
+            { id:94, name:'Codeium', vendor:'Codeium', cat:'code', rating:4.3, desc:'AI代码补全平台(Windsurf)，支持70+语言和40+IDE，企业级代码AI。', features:['70+语言','40+IDE','代码补全','AI搜索','企业版'], pricing:'免费 + Pro $15/月', website:'https://codeium.com', tags:['代码补全','免费'], free:true },
+
+            // ===== 设计与创意 补充 =====
+            { id:95, name:'Galileo AI', vendor:'Galileo AI', cat:'design', rating:4.2, desc:'AI UI设计生成工具，从文本描述生成可编辑的Figma设计稿，加速原型设计。', features:['UI生成','Figma导入','文本描述','可编辑设计','原型加速'], pricing:'Pro $16/月', website:'https://www.usegalileo.ai', tags:['UI设计','原型'] },
+            { id:96, name:'Uizard', vendor:'Uizard', cat:'design', rating:4.2, desc:'AI原型设计工具，手绘草图秒变可交互原型，支持截图转设计。', features:['草图转原型','截图转设计','AI模板','可交互原型','团队协作'], pricing:'免费 + Pro $12/月', website:'https://uizard.io', tags:['原型','免费'], free:true },
+            { id:97, name:'Recraft', vendor:'Recraft', cat:'design', rating:4.3, desc:'AI品牌设计平台，统一品牌风格生成矢量图、图标和营销素材。', features:['品牌统一','矢量图生成','图标设计','营销素材','风格控制'], pricing:'免费 + Pro $12/月', website:'https://www.recraft.ai', tags:['品牌','免费'], free:true },
+            { id:98, name:'Khroma', vendor:'Khroma', cat:'design', rating:4.1, desc:'AI配色工具，根据偏好训练生成个性化配色方案，设计师必备。', features:['AI配色','个性化训练','无限方案','收藏管理','搜索配色'], pricing:'免费', website:'https://www.khroma.co', tags:['配色','免费'], free:true },
+
+            // ===== 办公效率 补充 =====
+            { id:99, name:'Tome', vendor:'Tome', cat:'office', rating:4.2, desc:'AI叙事和演示工具，一键生成故事化PPT和文档，设计精美。', features:['故事化PPT','AI生成','设计精美','文档生成','实时协作'], pricing:'免费 + Pro $16/月', website:'https://tome.app', tags:['PPT','免费'], free:true },
+            { id:100, name:'Mem', vendor:'Mem', cat:'office', rating:4.1, desc:'AI笔记应用，自动组织和检索知识，AI理解笔记内容提供智能关联。', features:['AI笔记','自动组织','智能检索','知识关联','AI写作'], pricing:'免费 + Mem X $14.99/月', website:'https://get.mem.ai', tags:['笔记','免费'], free:true },
+            { id:101, name:'Taskade', vendor:'Taskade', cat:'office', rating:4.2, desc:'AI项目管理工具，集成AI Agent自动化任务、生成思维导图和文档。', features:['AI Agent','项目管理','思维导图','文档生成','团队协作'], pricing:'免费 + Pro $19/月', website:'https://www.taskade.com', tags:['项目管理','免费'], free:true },
+            { id:102, name:'Clockwise', vendor:'Clockwise', cat:'office', rating:4.2, desc:'AI日程优化工具，自动优化团队时间表，减少会议冲突，保护专注时间。', features:['AI日程优化','会议冲突解决','专注时间保护','团队分析','日历集成'], pricing:'免费 + Pro $6/月', website:'https://www.getclockwise.com', tags:['日程','免费'], free:true },
+
+            // ===== AI搜索研究 补充 =====
+            { id:103, name:'NotebookLM', vendor:'Google', cat:'search', rating:4.6, desc:'Google AI研究笔记工具，上传文档生成播客式音频概览和思维导图，研究神器。', features:['AI播客','思维导图','文档分析','音频概览','笔记生成'], pricing:'免费', website:'https://notebooklm.google.com', tags:['热门','研究','免费'], hot:true, free:true },
+            { id:104, name:'Consensus', vendor:'Consensus', cat:'search', rating:4.3, desc:'AI学术搜索工具，从2亿+科研论文中提取证据和结论，支持自然语言提问。', features:['学术搜索','2亿+论文','证据提取','研究综合','引用标注'], pricing:'免费 + Pro $11.99/月', website:'https://consensus.app', tags:['学术','免费'], free:true },
+            { id:105, name:'Elicit', vendor:'Ought', cat:'search', rating:4.3, desc:'AI研究助手，自动化文献综述，从论文中提取数据和结论，研究流程加速器。', features:['文献综述','数据提取','结论提取','研究加速','论文搜索'], pricing:'免费 + Plus $12/月', website:'https://elicit.com', tags:['研究','免费'], free:true },
+
+            // ===== 营销与销售 补充 =====
+            { id:106, name:'Clay', vendor:'Clay', cat:'marketing', rating:4.4, desc:'AI数据丰富化平台，自动查找和补全潜在客户信息，销售和营销团队的秘密武器。', features:['数据丰富化','潜在客户','AI搜索','自动化','CRM集成'], pricing:'免费 + Pro $149/月', website:'https://www.clay.com', tags:['销售','数据'], free:true },
+            { id:107, name:'Copy.ai GTM', vendor:'Copy.ai', cat:'marketing', rating:4.3, desc:'AI GTM工作流自动化，自动生成销售邮件、跟进序列和外呼脚本。', features:['销售邮件','跟进序列','GTM自动化','AI模板','CRM同步'], pricing:'免费 + Pro', website:'https://www.copy.ai', tags:['销售','免费'], free:true },
+            { id:108, name:'稿定AI', vendor:'稿定设计', cat:'marketing', rating:4.2, desc:'国产AI营销设计平台，一键生成电商素材、海报和社交媒体图片。', features:['电商素材','海报生成','社媒图片','AI抠图','模板丰富'], pricing:'免费 + 会员', website:'https://www.gaoding.com', tags:['国产','营销','免费'], free:true },
+
+            // ===== 教育学习 补充 =====
+            { id:109, name:'Khanmigo', vendor:'Khan Academy', cat:'education', rating:4.4, desc:'可汗学院AI导师，一对一苏格拉底式教学，引导学生思考而非直接给答案。', features:['苏格拉底教学','1对1辅导','引导思考','写作反馈','数学辅导'], pricing:'$4/月', website:'https://www.khanmigo.ai', tags:['教育','AI导师'] },
+            { id:110, name:'Character.AI教育', vendor:'Character Technologies', cat:'education', rating:4.3, desc:'与历史人物和学科专家AI对话学习，沉浸式语言和历史学习体验。', features:['历史人物对话','语言学习','沉浸式教学','角色扮演','知识问答'], pricing:'免费', website:'https://character.ai', tags:['教育','免费'], free:true },
+            { id:111, name:'Socratic', vendor:'Google', cat:'education', rating:4.3, desc:'Google AI学习助手App，拍照解题并提供分步解释，涵盖数理化等多学科。', features:['拍照解题','分步解释','多学科','视频资源','AI辅导'], pricing:'免费', website:'https://socratic.org', tags:['学习','免费'], free:true },
+
+            // ===== 电商与商业 补充 =====
+            { id:112, name:'ViSenze', vendor:'ViSenze', cat:'ecommerce', rating:4.1, desc:'AI电商视觉搜索和推荐引擎，以图搜图提升购物体验和转化率。', features:['视觉搜索','以图搜图','智能推荐','商品标签','转化优化'], pricing:'企业定制', website:'https://www.visenze.com', tags:['电商','视觉搜索'] },
+            { id:113, name:'Clerk.io', vendor:'Clerk', cat:'ecommerce', rating:4.1, desc:'AI电商个性化和搜索平台，智能推荐、搜索优化和邮件个性化。', features:['智能推荐','搜索优化','邮件个性化','行为分析','A/B测试'], pricing:'企业定制', website:'https://www.clerk.io', tags:['电商','推荐'] },
+
+            // ===== 3D与虚拟制作 =====
+            { id:114, name:'Meshy AI', vendor:'Meshy', cat:'3d', rating:4.4, desc:'AI 3D建模平台，文本/图像生成3D模型，自动UV展开和PBR纹理，快速绑定骨骼。', features:['文本转3D','图像转3D','自动UV展开','PBR纹理','骨骼绑定'], pricing:'免费 + Pro $20/月', website:'https://www.meshy.ai', tags:['3D建模','免费'], free:true },
+            { id:115, name:'Rodin', vendor:'Hyper3D', cat:'3d', rating:4.3, desc:'免费AI 3D模型生成工具，文本/图像转游戏级3D网格，约30秒生成，质量优秀。', features:['文本转3D','图像转3D','游戏级质量','30秒生成','免费使用'], pricing:'免费', website:'https://hyper3d.ai', tags:['3D建模','免费'], free:true },
+            { id:116, name:'Luma Genie', vendor:'Luma AI', cat:'3d', rating:4.3, desc:'Luma AI的创意3D生成工具，4个草稿秒出，5-20分钟精修，完全免费。', features:['快速草稿生成','高精度精修','创意风格','完全免费','Web端使用'], pricing:'免费', website:'https://lumalabs.ai/genie', tags:['3D建模','免费'], free:true },
+            { id:117, name:'3D AI Studio', vendor:'3D AI Studio', cat:'3d', rating:4.2, desc:'全能Web 3D套件，支持文本/图像转3D和体素模式，质量与Meshy相当。', features:['文本转3D','图像转3D','体素模式','多格式导出','Web端'], pricing:'免费 + Pro', website:'https://3daistudio.com', tags:['3D建模','免费'], free:true },
+            { id:118, name:'Tripo AI', vendor:'Tripo', cat:'3d', rating:4.1, desc:'快速AI 3D模型生成器，从单张图片几秒内生成高质量3D模型，支持多种导出格式。', features:['图像转3D','秒级生成','多格式导出','高质量网格','API支持'], pricing:'免费 + Pro', website:'https://www.tripo3d.ai', tags:['3D建模','免费'], free:true },
+            { id:119, name:'CSM AI', vendor:'CSM', cat:'3d', rating:4.0, desc:'从单张图片或文本生成完整3D场景和资产，支持PBR材质和动画。', features:['场景生成','PBR材质','动画支持','图像转3D','文本转3D'], pricing:'免费试用 + 付费', website:'https://csm.ai', tags:['3D场景'] },
+
+            // ===== 数字人与虚拟形象 =====
+            { id:120, name:'HeyGen', vendor:'HeyGen', cat:'digital-human', rating:4.6, desc:'AI数字人视频生成平台，从照片创建个性化说话头像，支持多语言和模板。', features:['AI数字人','照片生成头像','多语言','模板丰富','API集成'], pricing:'免费 + Creator $29/月', website:'https://www.heygen.com', tags:['数字人','热门'], hot:true, free:true },
+            { id:121, name:'D-ID', vendor:'D-ID', cat:'digital-human', rating:4.4, desc:'AI数字人创作平台，将静态照片变为会说话的虚拟形象，适合教育和营销。', features:['照片动画化','说话头像','多语言','API接口','批量生成'], pricing:'免费试用 + $5.99/月起', website:'https://www.d-id.com', tags:['数字人','免费'], free:true },
+            { id:122, name:'Hedra', vendor:'Hedra', cat:'digital-human', rating:4.3, desc:'AI角色动画平台，从图像、文字和音频创建表情丰富的动画角色。', features:['角色动画','表情控制','音频驱动','文字驱动','图像驱动'], pricing:'免费 + 付费', website:'https://www.hedra.com', tags:['数字人','免费'], free:true },
+            { id:123, name:'必火AI数字人', vendor:'必火AI', cat:'digital-human', rating:4.1, desc:'国产全链路AI数字人创作平台，覆盖电商直播、教育培训、政务服务等场景。', features:['数字人直播','教育培训','政务服务','全链路创作','中文优化'], pricing:'免费 + 会员', website:'https://www.bihuokeji.com', tags:['国产','数字人','免费'], free:true },
+            { id:124, name:'Character.AI', vendor:'Character Technologies', cat:'digital-human', rating:4.5, desc:'AI角色对话平台，创建和与AI角色互动，AvatarFX让图像动起来生成说话视频。', features:['AI角色创建','角色对话','AvatarFX视频','语音互动','社区生态'], pricing:'免费 + c.ai+ $9.99/月', website:'https://character.ai', tags:['热门','免费'], hot:true, free:true },
+
+            // ===== 数据分析与BI =====
+            { id:125, name:'Tableau', vendor:'Salesforce', cat:'data', rating:4.5, desc:'领先的数据可视化BI工具，集成AI驱动的分析和自然语言摘要功能。', features:['AI分析','自然语言摘要','数据可视化','预测分析','仪表板'], pricing:'Creator $75/人/月', website:'https://www.tableau.com', tags:['BI','企业'] },
+            { id:126, name:'Power BI', vendor:'Microsoft', cat:'data', rating:4.5, desc:'微软商业智能平台，AI驱动的预测分析、异常检测和数据可视化。', features:['AI预测分析','异常检测','数据可视化','自然语言查询','Office集成'], pricing:'免费 + Pro $10/月', website:'https://powerbi.microsoft.com', tags:['BI','免费'], free:true },
+            { id:127, name:'Julius AI', vendor:'Julius', cat:'data', rating:4.3, desc:'AI数据分析助手，用自然语言分析CSV/Excel数据，自动生成图表和洞察。', features:['自然语言分析','自动图表','CSV/Excel支持','统计分析','报告生成'], pricing:'免费 + Pro $20/月', website:'https://julius.ai', tags:['数据分析','免费'], free:true },
+            { id:128, name:'Akkio', vendor:'Akkio', cat:'data', rating:4.2, desc:'无代码AI数据分析平台，拖拽式数据准备和预测建模，适合非技术人员。', features:['无代码分析','预测建模','数据准备','拖拽操作','Chat数据探索'], pricing:'Starter $49/月', website:'https://www.akkio.com', tags:['无代码','数据分析'] },
+
+            // ===== 自动化与无代码 =====
+            { id:129, name:'Make', vendor:'Make (Integromat)', cat:'automation', rating:4.6, desc:'可视化自动化平台，比Zapier更灵活，支持复杂多步骤工作流和错误处理。', features:['可视化工作流','多步骤自动化','错误处理','1500+应用集成','数据转换'], pricing:'免费 + Core $9/月', website:'https://www.make.com', tags:['自动化','免费'], free:true },
+            { id:130, name:'n8n', vendor:'n8n', cat:'automation', rating:4.4, desc:'开源自动化工作流平台，可自托管部署，技术团队友好的Zapier替代方案。', features:['开源免费','自托管','可视化编辑','400+集成','代码节点'], pricing:'免费开源 + Cloud $20/月', website:'https://n8n.io', tags:['开源','自动化'], free:true },
+            { id:131, name:'Bardeen', vendor:'Bardeen', cat:'automation', rating:4.2, desc:'AI浏览器自动化插件，一键自动执行重复性网页任务，无需编码。', features:['浏览器自动化','一键执行','AI建议','模板丰富','无代码'], pricing:'免费 + Pro $15/月', website:'https://www.bardeen.ai', tags:['自动化','免费'], free:true },
+            { id:132, name:'Relevance AI', vendor:'Relevance AI', cat:'automation', rating:4.3, desc:'AI Agent自动化平台，构建和管理AI工作团队，自动化复杂业务流程。', features:['AI Agent团队','自动化流程','无代码构建','多模型支持','API集成'], pricing:'免费 + Pro $39/月', website:'https://relevanceai.com', tags:['AI Agent','免费'], free:true },
+
+            // ===== 浏览器智能体 =====
+            { id:133, name:'Manus', vendor:'Manus', cat:'browser', rating:4.7, desc:'现象级AI自主执行智能体，可同时处理多个标签页完成复杂任务，速度极快。', features:['多标签并行','自主执行','复杂任务','长时运行','浏览器操作'], pricing:'邀请制 + 付费', website:'https://manus.im', tags:['热门','智能体'], hot:true },
+            { id:134, name:'Operator', vendor:'OpenAI', cat:'browser', rating:4.5, desc:'OpenAI浏览器智能体，使用CUA模型截图、推理和操作网页完成任务。', features:['CUA模型','截图推理','网页操作','自主导航','任务自动化'], pricing:'ChatGPT Pro包含', website:'https://openai.com', tags:['热门','智能体'], hot:true },
+            { id:135, name:'Browser Use', vendor:'Browser Use', cat:'browser', rating:4.3, desc:'开源浏览器智能体库+云服务，WebVoyager得分89%，可自定义网页自动化。', features:['开源','WebVoyager 89%','云服务','自定义自动化','多标签'], pricing:'免费开源 + 云服务', website:'https://browser-use.com', tags:['开源','智能体'], free:true },
+            { id:136, name:'Genspark Super Agent', vendor:'Genspark', cat:'browser', rating:4.2, desc:'协调9个LLM和80+工具执行多步骤研究任务，全自动信息收集和分析。', features:['9 LLM协调','80+工具','多步骤研究','自动分析','报告生成'], pricing:'免费 + Pro', website:'https://www.genspark.ai', tags:['智能体','研究'], free:true },
+
+            // ===== 金融与法律 =====
+            { id:137, name:'AlphaSense', vendor:'AlphaSense', cat:'finance', rating:4.5, desc:'AI市场情报平台，分析海量金融文档，提供市场趋势和情绪信号。', features:['市场情报','文档分析','情绪信号','趋势预测','竞争分析'], pricing:'企业定制', website:'https://www.alpha-sense.com', tags:['金融','企业'] },
+            { id:138, name:'Harvey AI', vendor:'Harvey', cat:'finance', rating:4.6, desc:'AI法律助手，自动审查法律文件、合同分析和合规监控，律所广泛使用。', features:['法律文件审查','合同分析','合规监控','法律研究','文档生成'], pricing:'企业定制', website:'https://www.harvey.ai', tags:['法律','企业'] },
+            { id:139, name:'Kensho', vendor:'S&P Global', cat:'finance', rating:4.3, desc:'S&P Global的AI金融分析平台，提供预测建模和市场分析工具。', features:['金融分析','预测建模','市场分析','数据可视化','API集成'], pricing:'企业定制', website:'https://www.kensho.com', tags:['金融','企业'] },
+            { id:140, name:'Trade Ideas', vendor:'Trade Ideas', cat:'finance', rating:4.1, desc:'AI驱动的股票交易信号平台，基于历史模式实时生成交易建议。', features:['AI交易信号','实时扫描','历史模式分析','模拟交易','风险管理'], pricing:'Standard $118/月', website:'https://www.trade-ideas.com', tags:['交易','金融'] },
+            { id:141, name:'Casetext', vendor:'Casetext', cat:'finance', rating:4.4, desc:'AI法律研究平台(CoCounsel)，基于GPT-4，快速法律检索和文件审查。', features:['法律检索','文件审查','CoCounsel','GPT-4驱动','合同分析'], pricing:'企业定制', website:'https://casetext.com', tags:['法律','AI研究'] },
+            { id:142, name:'Spellbook', vendor:'Spellbook', cat:'finance', rating:4.2, desc:'AI合同起草和审查工具，直接在Word中提供合同条款建议和风险提示。', features:['合同起草','条款建议','风险提示','Word集成','AI审查'], pricing:'企业定制', website:'https://www.spellbook.legal', tags:['法律','合同'] },
+
+            // ===== 医疗健康 =====
+            { id:143, name:'AlphaFold', vendor:'Google DeepMind', cat:'health', rating:4.9, desc:'革命性AI蛋白质结构预测工具，加速药物发现和生物学研究，诺贝尔奖级别成果。', features:['蛋白质结构预测','药物发现','开源数据库','2亿+结构','加速研究'], pricing:'免费开源', website:'https://alphafold.ebi.ac.uk', tags:['科研','开源','热门'], hot:true, free:true },
+            { id:144, name:'Aidoc', vendor:'Aidoc', cat:'health', rating:4.4, desc:'AI医学影像分析平台，自动检测X光、CT等影像中的异常，辅助放射科医生。', features:['影像异常检测','X光分析','CT分析','实时警报','工作流集成'], pricing:'企业定制', website:'https://www.aidoc.com', tags:['医学影像','企业'] },
+            { id:145, name:'Woebot', vendor:'Woebot Health', cat:'health', rating:4.1, desc:'AI心理健康支持应用，提供认知行为疗法(CBT)对话，24/7可用。', features:['CBT疗法','情绪追踪','24/7可用','循证方法','心理健康'], pricing:'免费 + 企业版', website:'https://woebothealth.com', tags:['心理健康','免费'], free:true },
+            { id:146, name:'Ada Health', vendor:'Ada Health', cat:'health', rating:4.3, desc:'AI症状评估和健康助手，输入症状获取可能原因和就医建议。', features:['症状评估','健康建议','医学知识库','多语言','个性化分析'], pricing:'免费', website:'https://ada.com', tags:['健康','免费'], free:true },
+
+            // ===== 人力资源 =====
+            { id:147, name:'HireVue', vendor:'HireVue', cat:'hr', rating:4.2, desc:'AI视频面试和人才评估平台，分析面试表现和技能匹配度。', features:['视频面试','AI评估','技能匹配','游戏化测评','预测分析'], pricing:'企业定制', website:'https://www.hirevue.com', tags:['招聘','企业'] },
+            { id:148, name:'Eightfold', vendor:'Eightfold AI', cat:'hr', rating:4.3, desc:'AI人才智能平台，分析人才数据识别高潜力候选人，优化招聘和内部流动。', features:['人才分析','高潜力识别','招聘优化','内部流动','技能图谱'], pricing:'企业定制', website:'https://eightfold.ai', tags:['人才管理','企业'] },
+            { id:149, name:'Pymetrics', vendor:'Pymetrics', cat:'hr', rating:4.1, desc:'AI驱动的心理测量和人才匹配平台，用神经科学游戏评估候选人。', features:['神经科学游戏','心理测量','人才匹配','去偏评估','预测绩效'], pricing:'企业定制', website:'https://www.pymetrics.com', tags:['招聘','评估'] },
+
+            // ===== 翻译与本地化 =====
+            { id:150, name:'DeepL', vendor:'DeepL', cat:'translation', rating:4.8, desc:'全球最精准的AI翻译引擎，支持30+语言，翻译质量远超竞品，支持文档翻译。', features:['高精度翻译','30+语言','文档翻译','写作助手','API集成'], pricing:'免费 + Pro $8.99/月', website:'https://www.deepl.com', tags:['热门','翻译','免费'], hot:true, free:true },
+            { id:151, name:'DeepL Write', vendor:'DeepL', cat:'translation', rating:4.5, desc:'AI写作润色工具，改进语法、语气和风格，支持多语言写作优化。', features:['语法改进','语气调整','风格优化','多语言','实时建议'], pricing:'免费 + Pro', website:'https://www.deepl.com/write', tags:['写作','免费'], free:true },
+            { id:152, name:'Lokalise AI', vendor:'Lokalise', cat:'translation', rating:4.2, desc:'AI驱动的本地化管理平台，自动翻译+人工校对，适合App和网站国际化。', features:['自动翻译','本地化管理','人工校对','多平台','协作翻译'], pricing:'Start $120/月', website:'https://lokalise.com', tags:['本地化','企业'] },
+            { id:153, name:'Immersive Translate', vendor:'沉浸式翻译', cat:'translation', rating:4.5, desc:'免费双语对照浏览器翻译插件，支持10+翻译引擎，适合网页浏览和PDF阅读。', features:['双语对照','10+翻译引擎','PDF翻译','网页翻译','视频字幕'], pricing:'免费 + Pro $4.99/月', website:'https://immersivetranslate.com', tags:['翻译','免费','实用'], free:true },
+
+            // ===== PDF与文档处理 =====
+            { id:154, name:'ChatPDF', vendor:'ChatPDF', cat:'pdf', rating:4.4, desc:'AI PDF对话工具，上传PDF即可提问，自动提取关键信息和摘要。', features:['PDF对话','信息提取','自动摘要','多文档','多语言'], pricing:'免费 + Plus $19.99/月', website:'https://www.chatpdf.com', tags:['PDF','免费'], free:true },
+            { id:155, name:'PDF.ai', vendor:'PDF.ai', cat:'pdf', rating:4.2, desc:'与PDF文档聊天，支持批量上传、标签管理和团队协作，适合研究人员。', features:['PDF聊天','批量上传','标签管理','团队协作','API集成'], pricing:'免费 + Pro $15/月', website:'https://pdf.ai', tags:['PDF','免费'], free:true },
+            { id:156, name:'Sharly AI', vendor:'Sharly', cat:'pdf', rating:4.3, desc:'AI文档分析和摘要工具，支持PDF、Word、PPT等多种格式，自动生成摘要。', features:['多格式支持','AI摘要','跨文档分析','引用标注','团队协作'], pricing:'免费 + Pro', website:'https://www.sharly.ai', tags:['文档','免费'], free:true },
+            { id:157, name:'UPDF', vendor:'Superace', cat:'pdf', rating:4.3, desc:'全能PDF编辑器，集成AI摘要、翻译、解释功能，支持Windows/Mac/iOS/Android。', features:['PDF编辑','AI摘要','AI翻译','AI解释','多端同步'], pricing:'免费 + Pro $29.99/年', website:'https://updf.com', tags:['PDF','编辑','免费'], free:true },
+        ];
+
+        // ============ 全局状态 ============
+        let activeCategory = 'all';
+        let activeSort = 'default';
+        let searchQuery = '';
+
+        // ============ 初始化 ============
+        function init() {
+            createStars();
+            renderCategories();
+            updateStats();
+            renderTools();
+            document.getElementById('totalTools').textContent = tools.length;
+            document.getElementById('totalCats').textContent = categories.length - 1;
+        }
+
+        // 星空背景
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 2.5 + 1 + 'px';
+                star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+                star.style.setProperty('--delay', Math.random() * 3 + 's');
+                container.appendChild(star);
+            }
+        }
+
+        // 渲染分类列表
+        function renderCategories() {
+            const list = document.getElementById('categoryList');
+            list.innerHTML = categories.map(cat => {
+                const count = cat.id === 'all' ? tools.length : tools.filter(t => t.cat === cat.id).length;
+                return `
+                    <li class="category-item">
+                        <button class="category-link ${cat.id === activeCategory ? 'active' : ''}"
+                                onclick="selectCategory('${cat.id}')">
+                            <span class="category-icon">${cat.icon}</span>
+                            ${cat.name}
+                            <span class="category-count">${count}</span>
+                        </button>
+                    </li>
+                `;
+            }).join('');
+        }
+
+        // 选择分类
+        function selectCategory(catId) {
+            activeCategory = catId;
+            document.querySelectorAll('.category-link').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim().startsWith(
+                    categories.find(c => c.id === catId)?.icon || ''));
+            });
+            renderCategories();
+            updateSectionHeader();
+            renderTools();
+            // 移动端滚动到内容区
+            if (window.innerWidth <= 900) {
+                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 更新区域标题
+        function updateSectionHeader() {
+            const cat = categories.find(c => c.id === activeCategory);
+            if (cat) {
+                document.getElementById('sectionIcon').textContent = cat.icon;
+                document.getElementById('sectionName').textContent = cat.name;
+            }
+        }
+
+        // 更新统计
+        function updateStats() {
+            document.getElementById('totalTools').textContent = tools.length;
+            document.getElementById('totalCats').textContent = categories.length - 1;
+        }
+
+        // 排序
+        function setSort(sort) {
+            activeSort = sort;
+            document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.sort-btn[onclick="setSort('${sort}')"]`)?.classList.add('active');
+            renderTools();
+        }
+
+        // 获取过滤后的工具列表
+        function getFilteredTools() {
+            let filtered = [...tools];
+
+            // 分类过滤
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(t => t.cat === activeCategory);
+            }
+
+            // 搜索过滤
+            if (searchQuery.trim()) {
+                const q = searchQuery.toLowerCase();
+                filtered = filtered.filter(t =>
+                    t.name.toLowerCase().includes(q) ||
+                    t.vendor.toLowerCase().includes(q) ||
+                    t.desc.toLowerCase().includes(q) ||
+                    t.tags.some(tag => tag.toLowerCase().includes(q)) ||
+                    t.features.some(f => f.toLowerCase().includes(q)) ||
+                    (categories.find(c => c.id === t.cat)?.name || '').includes(q)
+                );
+            }
+
+            // 排序
+            if (activeSort === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            } else if (activeSort === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name, 'zh'));
+            } else {
+                // 默认：热门优先，然后按评分
+                filtered.sort((a, b) => (b.hot ? 1 : 0) - (a.hot ? 1 : 0) || b.rating - a.rating);
+            }
+
+            return filtered;
+        }
+
+        // 搜索
+        function filterTools() {
+            searchQuery = document.getElementById('searchInput').value;
+            renderTools();
+        }
+
+        // 渲染工具卡片
+        function renderTools() {
+            const filtered = getFilteredTools();
+            const grid = document.getElementById('toolsGrid');
+            const empty = document.getElementById('emptyState');
+            const countEl = document.getElementById('sectionCount');
+
+            countEl.textContent = `${filtered.length} 个工具`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                empty.style.display = 'block';
+            } else {
+                empty.style.display = 'none';
+                grid.innerHTML = filtered.map(tool => {
+                    const catName = categories.find(c => c.id === tool.cat)?.name || '';
+                    const starsHtml = '⭐'.repeat(Math.floor(tool.rating));
+                    return `
+                        <div class="tool-card" onclick="openDetail(${tool.id})">
+                            <div class="tool-card-header">
+                                <div class="tool-icon">${getToolEmoji(tool.cat)}</div>
+                                <div class="tool-name-area">
+                                    <div class="tool-name">${tool.name}</div>
+                                    <div class="tool-vendor">${tool.vendor}</div>
+                                    <div class="tool-rating">${starsHtml} ${tool.rating}</div>
+                                </div>
+                            </div>
+                            <div class="tool-desc">${tool.desc}</div>
+                            <div class="tool-tags">
+                                ${tool.tags.map(tag => {
+                                    let cls = 'tool-tag';
+                                    if (tag === '热门' || tag === 'hot') cls += ' hot';
+                                    if (tag === '免费' || tag === 'free') cls += ' free';
+                                    return `<span class="${cls}">${tag}</span>`;
+                                }).join('')}
+                                <span class="tool-tag">${catName}</span>
+                            </div>
+                            <div class="tool-actions" onclick="event.stopPropagation()">
+                                <a href="${tool.website}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">🔗 访问官网</a>
+                                <button class="btn btn-outline btn-sm" onclick="openDetail(${tool.id})">📋 查看详情</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // 获取分类emoji
+        function getToolEmoji(catId) {
+            const map = {
+                'chatbot': '💬', 'llm': '🧠', 'image-gen': '🎨', 'image-edit': '✂️',
+                'video-gen': '🎬', 'video-edit': '🎞️', 'voice': '🎵', 'writing': '✍️',
+                'code': '💻', 'design': '🎯', 'office': '📊', 'search': '🔬',
+                'marketing': '📈', 'education': '📚', 'ecommerce': '🛍️',
+                '3d': '🧊', 'digital-human': '👤', 'data': '📉', 'automation': '⚡',
+                'browser': '🌐', 'finance': '⚖️', 'health': '🏥', 'hr': '👥',
+                'translation': '🌍', 'pdf': '📄'
+            };
+            return map[catId] || '🤖';
+        }
+
+        // 打开详情弹窗
+        function openDetail(toolId) {
+            const tool = tools.find(t => t.id === toolId);
+            if (!tool) return;
+
+            const catName = categories.find(c => c.id === tool.cat)?.name || '';
+            const starsHtml = '⭐'.repeat(Math.floor(tool.rating));
+
+            document.getElementById('modalHeader').innerHTML = `
+                <div class="tool-icon" style="width:64px;height:64px;font-size:2rem;">${getToolEmoji(tool.cat)}</div>
+                <div class="tool-name-area">
+                    <div class="tool-name">${tool.name}</div>
+                    <div class="tool-vendor">${tool.vendor}</div>
+                    <div class="tool-rating">${starsHtml} ${tool.rating} · ${catName}</div>
+                </div>
+                <button class="modal-close" onclick="closeModalDirect()">✕</button>
+            `;
+
+            document.getElementById('modalBody').innerHTML = `
+                <div class="detail-section">
+                    <h4>📝 简介</h4>
+                    <p class="tool-desc">${tool.desc}</p>
+                </div>
+                <div class="detail-section">
+                    <h4>✨ 核心功能</h4>
+                    <ul class="detail-features">
+                        ${tool.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="detail-section">
+                    <h4>📊 基本信息</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">💰 价格</div>
+                            <div class="detail-value">${tool.pricing}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">⭐ 评分</div>
+                            <div class="detail-value">${tool.rating} / 5.0</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">🏷️ 分类</div>
+                            <div class="detail-value">${catName}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">🏢 厂商</div>
+                            <div class="detail-value">${tool.vendor}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                        ${tool.tags.map(tag => {
+                            let cls = 'tool-tag';
+                            if (tag === '热门' || tag === 'hot') cls += ' hot';
+                            if (tag === '免费' || tag === 'free') cls += ' free';
+                            return `<span class="${cls}">${tag}</span>`;
+                        }).join('')}
+                    </div>
+                </div>
+                <div style="margin-top:20px;">
+                    <a href="${tool.website}" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;padding:12px;">
+                        🔗 访问官网下载使用
+                    </a>
+                </div>
+            `;
+
+            document.getElementById('modalOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event.target === document.getElementById('modalOverlay')) {
+                closeModalDirect();
+            }
+        }
+
+        function closeModalDirect() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function resetAll() {
+            activeCategory = 'all';
+            activeSort = 'default';
+            searchQuery = '';
+            document.getElementById('searchInput').value = '';
+            renderCategories();
+            updateSectionHeader();
+            renderTools();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 键盘快捷键
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModalDirect();
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+        });
+
+        // 启动
+        init();
+    </script>
+</body>
+</html>
