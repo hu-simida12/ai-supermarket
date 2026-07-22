@@ -475,6 +475,12 @@
             margin-top: 40px;
         }
         .footer a { color: var(--accent-light); text-decoration: none; }
+        .stats-bar strong { color: var(--accent-light); }
+        .stats-bar span { white-space: nowrap; }
+        @media (max-width: 480px) {
+            .stats-bar { gap: 12px !important; font-size: 0.75rem !important; }
+            .stats-bar button { font-size: 0.7rem !important; padding: 3px 10px !important; }
+        }
     </style>
 </head>
 <body>
@@ -546,9 +552,31 @@
 
     <!-- 页脚 -->
     <footer class="footer">
-        <p>AI超市 © 2025 · 收录主流AI工具 · 持续更新中 · 数据来源公开信息整理</p>
+        <div class="stats-bar" id="statsBar" style="display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;font-size:0.85rem;">
+            <span>👁️ 今日 <strong id="statToday">0</strong></span>
+            <span>📅 本月 <strong id="statMonth">0</strong></span>
+            <span>📊 本季 <strong id="statQuarter">0</strong></span>
+            <span>📈 全年 <strong id="statYear">0</strong></span>
+            <span>🕐 累计 <strong id="statTotal">0</strong></span>
+            <button onclick="showStatsPanel()" style="background:var(--accent);color:white;border:none;padding:4px 12px;border-radius:12px;cursor:pointer;font-size:0.78rem;">📋 详细统计</button>
+        </div>
+        <p>AI超市 © 2025 · 收录157款主流AI工具 · 持续更新中 · 数据来源公开信息整理</p>
         <p style="margin-top:4px;">本站仅做工具收录和介绍，各工具版权归原作者所有</p>
     </footer>
+
+    <!-- 统计面板弹窗 -->
+    <div class="modal-overlay" id="statsPanelOverlay" style="display:none;" onclick="if(event.target===this)closeStatsPanel()">
+        <div class="modal" style="max-width:700px;" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <div class="tool-name">📊 访问统计面板</div>
+                    <div class="tool-vendor">数据实时更新 · 存储于浏览器本地</div>
+                </div>
+                <button class="modal-close" onclick="closeStatsPanel()">✕</button>
+            </div>
+            <div class="modal-body" id="statsPanelBody"></div>
+        </div>
+    </div>
 
     <script>
         // ============ 数据定义 ============
@@ -823,8 +851,172 @@
         let activeSort = 'default';
         let searchQuery = '';
 
+        // ============ 访问统计系统 ============
+        const STATS_KEY = 'ai_supermarket_stats';
+        function getStats() {
+            try { return JSON.parse(localStorage.getItem(STATS_KEY)) || {}; } catch(e) { return {}; }
+        }
+        function saveStats(s) { localStorage.setItem(STATS_KEY, JSON.stringify(s)); }
+
+        function recordVisit() {
+            const now = new Date();
+            const dayKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+            const monthKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+            const quarter = Math.floor(now.getMonth() / 3) + 1;
+            const quarterKey = `${now.getFullYear()}-Q${quarter}`;
+            const yearKey = `${now.getFullYear()}`;
+            const stats = getStats();
+            stats[dayKey] = (stats[dayKey] || 0) + 1;
+            stats[monthKey] = (stats[monthKey] || 0) + 1;
+            stats[quarterKey] = (stats[quarterKey] || 0) + 1;
+            stats[yearKey] = (stats[yearKey] || 0) + 1;
+            stats._total = (stats._total || 0) + 1;
+            // 记录最近30天每日数据
+            stats._daily = stats._daily || {};
+            stats._daily[dayKey] = (stats._daily[dayKey] || 0) + 1;
+            // 清理超过90天的每日数据
+            const cutoff = new Date(now - 90*86400000).toISOString().slice(0,10);
+            for (const k of Object.keys(stats._daily)) { if (k < cutoff) delete stats._daily[k]; }
+            saveStats(stats);
+            updateStatsDisplay();
+        }
+
+        function updateStatsDisplay() {
+            const now = new Date();
+            const dayKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+            const monthKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+            const quarter = Math.floor(now.getMonth() / 3) + 1;
+            const quarterKey = `${now.getFullYear()}-Q${quarter}`;
+            const yearKey = `${now.getFullYear()}`;
+            const stats = getStats();
+            const el = (id) => document.getElementById(id);
+            const setVal = (id, v) => { const e = el(id); if (e) e.textContent = v; };
+            setVal('statToday', (stats[dayKey] || 0).toLocaleString());
+            setVal('statMonth', (stats[monthKey] || 0).toLocaleString());
+            setVal('statQuarter', (stats[quarterKey] || 0).toLocaleString());
+            setVal('statYear', (stats[yearKey] || 0).toLocaleString());
+            setVal('statTotal', (stats._total || 0).toLocaleString());
+        }
+
+        function showStatsPanel() {
+            const stats = getStats();
+            const now = new Date();
+            const dayKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+            const monthKey = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+            const quarter = Math.floor(now.getMonth() / 3) + 1;
+            const quarterKey = `${now.getFullYear()}-Q${quarter}`;
+            const yearKey = `${now.getFullYear()}`;
+
+            // 生成最近30天数据
+            const daily = stats._daily || {};
+            const days = [];
+            for (let i = 29; i >= 0; i--) {
+                const d = new Date(now - i*86400000);
+                const k = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+                days.push({ date: `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`, count: daily[k] || 0 });
+            }
+            const maxCount = Math.max(1, ...days.map(d=>d.count));
+            const barChart = days.map(d => {
+                const h = Math.max(4, Math.round((d.count / maxCount) * 120));
+                const isToday = d.date === `${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
+                return `<div style="display:flex;flex-direction:column;align-items:center;gap:4px;min-width:28px;">
+                    <span style="font-size:0.7rem;color:var(--text-muted);">${d.count || ''}</span>
+                    <div style="width:18px;height:${h}px;background:${isToday?'linear-gradient(180deg,#a78bfa,#8b5cf6)':'var(--accent-glow)'};border-radius:4px 4px 0 0;${isToday?'box-shadow:0 0 8px var(--accent-glow)':''}"></div>
+                    <span style="font-size:0.65rem;color:${isToday?'var(--accent-light)':'var(--text-muted)'};${isToday?'font-weight:700':''}">${d.date}</span>
+                </div>`;
+            }).join('');
+
+            // 月度统计
+            const monthly = {};
+            for (const [k, v] of Object.entries(stats)) {
+                if (/^\d{4}-\d{2}$/.test(k)) monthly[k] = v;
+            }
+            const monthList = Object.entries(monthly).sort().slice(-6);
+
+            // 季度统计
+            const quarterly = {};
+            for (const [k, v] of Object.entries(stats)) {
+                if (/^\d{4}-Q[1-4]$/.test(k)) quarterly[k] = v;
+            }
+            const quarterList = Object.entries(quarterly).sort().slice(-4);
+
+            // 年度统计
+            const yearly = {};
+            for (const [k, v] of Object.entries(stats)) {
+                if (/^\d{4}$/.test(k)) yearly[k] = v;
+            }
+            const yearList = Object.entries(yearly).sort().slice(-3);
+
+            document.getElementById('statsPanelBody').innerHTML = `
+                <div class="detail-section">
+                    <h4>📊 实时概览</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item"><div class="detail-label">👁️ 今日访问</div><div class="detail-value" style="font-size:1.3rem;color:var(--accent-light);">${(stats[dayKey]||0).toLocaleString()}</div></div>
+                        <div class="detail-item"><div class="detail-label">📅 本月累计</div><div class="detail-value" style="font-size:1.3rem;">${(stats[monthKey]||0).toLocaleString()}</div></div>
+                        <div class="detail-item"><div class="detail-label">📊 本季累计</div><div class="detail-value" style="font-size:1.3rem;">${(stats[quarterKey]||0).toLocaleString()}</div></div>
+                        <div class="detail-item"><div class="detail-label">📈 全年累计</div><div class="detail-value" style="font-size:1.3rem;">${(stats[yearKey]||0).toLocaleString()}</div></div>
+                    </div>
+                    <div style="margin-top:12px;background:var(--bg);padding:12px 16px;border-radius:10px;text-align:center;">
+                        <span style="color:var(--text-muted);">🕐 历史累计总访问量：</span>
+                        <strong style="font-size:1.5rem;background:linear-gradient(135deg,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">${(stats._total||0).toLocaleString()}</strong>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h4>📈 最近30天趋势</h4>
+                    <div style="display:flex;align-items:flex-end;gap:2px;overflow-x:auto;padding:16px 8px 8px;background:var(--bg);border-radius:10px;min-height:160px;justify-content:center;">
+                        ${barChart}
+                    </div>
+                </div>
+                ${monthList.length > 0 ? `
+                <div class="detail-section">
+                    <h4>📅 月度统计</h4>
+                    <div class="detail-grid">
+                        ${monthList.map(([k,v]) => {
+                            const [y,m] = k.split('-');
+                            const isCurrent = k === monthKey;
+                            return `<div class="detail-item" style="${isCurrent?'border:1px solid var(--accent);':''}"><div class="detail-label">${y}年${m}月${isCurrent?' (当前)':''}</div><div class="detail-value">${v.toLocaleString()} 次</div></div>`;
+                        }).join('')}
+                    </div>
+                </div>`:''}
+                ${quarterList.length > 0 ? `
+                <div class="detail-section">
+                    <h4>📊 季度统计</h4>
+                    <div class="detail-grid">
+                        ${quarterList.map(([k,v]) => {
+                            const isCurrent = k === quarterKey;
+                            return `<div class="detail-item" style="${isCurrent?'border:1px solid var(--accent);':''}"><div class="detail-label">${k}${isCurrent?' (当前)':''}</div><div class="detail-value">${v.toLocaleString()} 次</div></div>`;
+                        }).join('')}
+                    </div>
+                </div>`:''}
+                ${yearList.length > 0 ? `
+                <div class="detail-section">
+                    <h4>📈 年度统计</h4>
+                    <div class="detail-grid">
+                        ${yearList.map(([k,v]) => {
+                            const isCurrent = k === yearKey;
+                            return `<div class="detail-item" style="${isCurrent?'border:1px solid var(--accent);':''}"><div class="detail-label">${k}年${isCurrent?' (当前)':''}</div><div class="detail-value">${v.toLocaleString()} 次</div></div>`;
+                        }).join('')}
+                    </div>
+                </div>`:''}
+                <div class="detail-section">
+                    <p style="font-size:0.78rem;color:var(--text-muted);text-align:center;">
+                        ⚠️ 数据存储在浏览器本地，仅统计当前设备/浏览器的访问次数。<br>
+                        如需全平台统一统计，请前往 <a href="https://www.goatcounter.com/signup" target="_blank" style="color:var(--accent-light);">GoatCounter</a> 注册免费账号。
+                    </p>
+                </div>
+            `;
+            document.getElementById('statsPanelOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStatsPanel() {
+            document.getElementById('statsPanelOverlay').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
         // ============ 初始化 ============
         function init() {
+            recordVisit();
             createStars();
             renderCategories();
             updateStats();
@@ -1102,7 +1294,7 @@
 
         // 键盘快捷键
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeModalDirect();
+            if (e.key === 'Escape') { closeModalDirect(); closeStatsPanel(); }
             if (e.ctrlKey && e.key === 'k') {
                 e.preventDefault();
                 document.getElementById('searchInput').focus();
