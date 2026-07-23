@@ -560,7 +560,7 @@
             <span>🕐 累计 <strong id="statTotal">0</strong></span>
             <button onclick="showStatsPanel()" style="background:var(--accent);color:white;border:none;padding:4px 12px;border-radius:12px;cursor:pointer;font-size:0.78rem;">📋 详细统计</button>
         </div>
-        <p>AI超市 © 2025 · 收录157款主流AI工具 · 持续更新中 · 数据来源公开信息整理</p>
+        <p>AI超市 © 2025 · 收录200款主流AI工具 · 持续更新中 · 数据来源公开信息整理</p>
         <p style="margin-top:4px;">本站仅做工具收录和介绍，各工具版权归原作者所有</p>
     </footer>
 
@@ -597,6 +597,7 @@
             { id: 'marketing', name: '营销与销售', icon: '📈' },
             { id: 'education', name: '教育学习', icon: '📚' },
             { id: 'ecommerce', name: '电商与商业', icon: '🛍️' },
+            { id: 'agent', name: '智能体', icon: '🤖' },
             { id: '3d', name: '3D与虚拟制作', icon: '🧊' },
             { id: 'digital-human', name: '数字人与虚拟形象', icon: '👤' },
             { id: 'data', name: '数据分析与BI', icon: '📉' },
@@ -844,6 +845,51 @@
             { id:155, name:'PDF.ai', vendor:'PDF.ai', cat:'pdf', rating:4.2, desc:'与PDF文档聊天，支持批量上传、标签管理和团队协作，适合研究人员。', features:['PDF聊天','批量上传','标签管理','团队协作','API集成'], pricing:'免费 + Pro $15/月', website:'https://pdf.ai', tags:['PDF','免费'], free:true },
             { id:156, name:'Sharly AI', vendor:'Sharly', cat:'pdf', rating:4.3, desc:'AI文档分析和摘要工具，支持PDF、Word、PPT等多种格式，自动生成摘要。', features:['多格式支持','AI摘要','跨文档分析','引用标注','团队协作'], pricing:'免费 + Pro', website:'https://www.sharly.ai', tags:['文档','免费'], free:true },
             { id:157, name:'UPDF', vendor:'Superace', cat:'pdf', rating:4.3, desc:'全能PDF编辑器，集成AI摘要、翻译、解释功能，支持Windows/Mac/iOS/Android。', features:['PDF编辑','AI摘要','AI翻译','AI解释','多端同步'], pricing:'免费 + Pro $29.99/年', website:'https://updf.com', tags:['PDF','编辑','免费'], free:true },
+
+            // ===== 智能体 =====
+            { id:158, name:'WorkBuddy', vendor:'CodeBuddy', cat:'agent', rating:4.6, desc:'腾讯云推出的AI智能体开发平台，支持自然语言创建智能体，可连接多种工具和服务，实现自动化工作流。', features:['自然语言创建智能体','多工具连接','自动化工作流','企业级部署','中文优化'], pricing:'免费 + 企业版', website:'https://copilot.tencent.com', tags:['热门','国产','免费'], hot:true, free:true },
+            { id:159, name:'Manus', vendor:'Monica', cat:'agent', rating:4.7, desc:'现象级通用AI智能体，能自主规划并执行复杂多步骤任务，支持多标签页并行操作，速度极快。', features:['自主规划执行','多标签并行','复杂任务','长时运行','浏览器操作'], pricing:'邀请制 + 付费', website:'https://manus.im', tags:['热门','智能体'], hot:true },
+            { id:160, name:'Claude Cowork', vendor:'Anthropic', cat:'agent', rating:4.6, desc:'Anthropic推出的桌面端智能体，能在文件、应用及插件间自主协作，交付完整文档、表格和报告。', features:['桌面端智能体','跨应用协作','文档生成','表格报告','自主执行'], pricing:'Claude Pro包含', website:'https://claude.ai', tags:['热门','智能体'], hot:true },
+            { id:161, name:'ChatGPT Work', vendor:'OpenAI', cat:'agent', rating:4.5, desc:'OpenAI发布的智能体功能，能从应用、文件、浏览器中提取上下文，生成文档、演示文稿和分析报告。', features:['上下文提取','文档生成','演示文稿','分析报告','周期性任务'], pricing:'ChatGPT订阅包含', website:'https://chat.openai.com', tags:['热门','智能体'], hot:true },
+            { id:162, name:'Gemini Spark', vendor:'Google', cat:'agent', rating:4.5, desc:'Google全天候个人AI智能体，设备关闭后仍可在后台运行，支持任务执行、工作调度和技能复用。', features:['全天候运行','后台任务','工作调度','技能复用','Google Workspace'], pricing:'Google AI Ultra订阅', website:'https://gemini.google.com', tags:['热门','智能体'], hot:true },
+            { id:163, name:'Mistral Vibe', vendor:'Mistral AI', cat:'agent', rating:4.4, desc:'Mistral推出的智能体平台(前身为Le Chat)，支持深度研究、会议筹备、文档生成，MCP协议连接100+工具。', features:['深度研究','会议筹备','文档生成','MCP协议','100+工具'], pricing:'免费 + 企业版', website:'https://chat.mistral.ai', tags:['智能体','免费'], free:true },
+            { id:164, name:'AutoGPT', vendor:'AutoGPT', cat:'agent', rating:4.3, desc:'开源自主AI智能体先驱，能自主分解目标、规划步骤、调用工具并执行多步骤任务，社区活跃。', features:['自主目标分解','工具调用','多步骤执行','开源可定制','社区生态'], pricing:'免费开源', website:'https://agpt.co', tags:['开源','智能体','免费'], free:true },
+            { id:165, name:'CrewAI', vendor:'CrewAI', cat:'agent', rating:4.4, desc:'多智能体协作框架，可创建多个角色智能体协同完成任务，适合复杂业务流程自动化。', features:['多智能体协作','角色定义','任务编排','流程自动化','企业部署'], pricing:'免费开源 + 企业版', website:'https://www.crewai.com', tags:['开源','智能体','免费'], free:true },
+            { id:166, name:'LangGraph', vendor:'LangChain', cat:'agent', rating:4.3, desc:'LangChain推出的智能体工作流编排框架，支持循环、条件分支和状态管理，构建复杂AI应用。', features:['工作流编排','循环分支','状态管理','可视化调试','企业级'], pricing:'免费开源 + 云服务', website:'https://langchain-ai.github.io/langgraph', tags:['开源','智能体','免费'], free:true },
+            { id:167, name:'Zapier Agents', vendor:'Zapier', cat:'agent', rating:4.2, desc:'Zapier推出的AI智能体平台，在9000+应用中跨平台作业，描述任务即可让智能体自动执行。', features:['9000+应用','跨平台作业','自然语言任务','无代码','企业集成'], pricing:'免费试用 + 付费', website:'https://zapier.com/agents', tags:['智能体','自动化'] },
+            { id:168, name:'Base44 Superagents', vendor:'Base44', cat:'agent', rating:4.1, desc:'专为开发者和独立创始人打造的智能体平台，可创建智能体执行定时任务，如扫描邮件、起草回复等。', features:['定时任务','邮件处理','WhatsApp集成','快速设置','开发者友好'], pricing:'免费 + 付费', website:'https://base44.com', tags:['智能体','开发者'], free:true },
+            { id:169, name:'Arahi Agent Builder', vendor:'Arahi', cat:'agent', rating:4.0, desc:'一句话即可生成可运行智能体的平台，可视化编辑图支持替换工具、调整语气和添加审批节点。', features:['一句话生成','可视化编辑','工具替换','语气调整','审批节点'], pricing:'免费 + 付费', website:'https://arahi.ai', tags:['智能体','无代码','免费'], free:true },
+            { id:170, name:'Dia Browser', vendor:'The Browser Company', cat:'agent', rating:4.4, desc:'全球首个AI原生浏览器，将AI整合进搜索全流程，侧边栏AI实时接管网页，重塑搜索体验。', features:['AI原生浏览器','实时网页接管','侧边栏AI','搜索重塑','深度集成'], pricing:'封闭Alpha', website:'https://www.diabrowser.com', tags:['热门','浏览器','智能体'], hot:true },
+            { id:171, name:'ChatGPT Atlas', vendor:'OpenAI', cat:'agent', rating:4.3, desc:'OpenAI推出的AI原生浏览器，集成ChatGPT智能体，支持网页实时分析和多任务并行处理。', features:['AI原生浏览器','网页实时分析','多任务并行','ChatGPT集成','智能导航'], pricing:'ChatGPT Pro包含', website:'https://openai.com', tags:['浏览器','智能体'], hot:true },
+            { id:172, name:'June', vendor:'June AI', cat:'agent', rating:4.2, desc:'面向Mac用户的开源隐私优先AI智能体，集聊天、语音听写、会议记录于一体，本地运行。', features:['Mac专属','本地运行','隐私优先','语音听写','会议记录'], pricing:'免费开源', website:'https://juneai.com', tags:['开源','隐私','Mac','免费'], free:true },
+            { id:173, name:'Grok Imagine', vendor:'xAI', cat:'agent', rating:4.3, desc:'xAI推出的AI视频与图像创作工作室，针对社交媒体审美和电影级品质，文本提示快速生成高清动态视频。', features:['视频生成','图像生成','电影级品质','社交媒体','文本提示'], pricing:'免费试用 + 付费', website:'https://x.ai', tags:['热门','创作','智能体'], hot:true, free:true },
+            { id:174, name:'Nano Banana Pro', vendor:'Google', cat:'agent', rating:4.6, desc:'Google最新AI图像生成模型，世界知识、语义理解和文本渲染实现代际跨越，擅长复杂信息图。', features:['复杂信息图','语义理解','文本渲染','精准可控','世界知识'], pricing:'免费使用', website:'https://aistudio.google.com', tags:['热门','图像','智能体'], hot:true, free:true },
+            { id:175, name:'Sora 2', vendor:'OpenAI', cat:'agent', rating:4.7, desc:'OpenAI第二代视频生成模型，Cameo数字分身、Remix二次创作，画面一致性和物理真实感显著提升。', features:['Cameo数字分身','Remix二次创作','画面一致性','物理真实感','影视级'], pricing:'ChatGPT Pro包含', website:'https://sora.chatgpt.com', tags:['热门','视频','智能体'], hot:true },
+            { id:176, name:'Veo 3', vendor:'Google', cat:'agent', rating:4.6, desc:'Google最新视频生成模型，原生同时生成视频和音频，效果逼真，单次生成时长显著提升。', features:['视频+音频同步','逼真效果','长时长生成','物理模拟','多风格'], pricing:'Google AI Ultra', website:'https://deepmind.google', tags:['热门','视频','智能体'], hot:true },
+            { id:177, name:'Mistral Medium 3', vendor:'Mistral AI', cat:'llm', rating:4.5, desc:'Mistral最新企业级模型，低延迟、低成本SOTA，适合大规模企业部署。', features:['低延迟','低成本','SOTA性能','企业部署','多语言'], pricing:'API按量计费', website:'https://mistral.ai', tags:['热门','API','企业'], hot:true },
+            { id:178, name:'GPT-5.3 Codex', vendor:'OpenAI', cat:'code', rating:4.7, desc:'OpenAI最新编程智能体，可自主编写代码、训练下一代模型，被称为AI自我进化里程碑。', features:['自主编程','模型训练','代码生成','自我进化','多语言'], pricing:'API按量计费', website:'https://openai.com', tags:['热门','编程','智能体'], hot:true },
+            { id:179, name:'Claude 4.6', vendor:'Anthropic', cat:'chatbot', rating:4.8, desc:'Anthropic最新旗舰模型，上下文窗口200K，写作质量公认最优，长文本推理能力突出。', features:['200K上下文','写作质量','长文本推理','Agent View并行','代码生成'], pricing:'免费 + Pro $20/月', website:'https://claude.ai', tags:['热门','长上下文','免费'], hot:true, free:true },
+            { id:180, name:'Gemini 3 Pro', vendor:'Google', cat:'chatbot', rating:4.8, desc:'Google最新旗舰模型，编程和多模态赛道断层式领先，前端开发门槛大幅降低。', features:['编程领先','多模态','前端开发','游戏生成','Google生态'], pricing:'免费 + Advanced', website:'https://gemini.google.com', tags:['热门','多模态','免费'], hot:true, free:true },
+            { id:181, name:'DeepSeek V3.2', vendor:'深度求索', cat:'llm', rating:4.6, desc:'DeepSeek最新大模型，推理能力进一步提升，中文场景表现出色，开源可商用。', features:['推理增强','中文优秀','开源可商用','低成本','多模态'], pricing:'免费开源 + API', website:'https://deepseek.com', tags:['国产','开源','热门'], hot:true, free:true },
+            { id:182, name:'Udio', vendor:'Udio', cat:'voice', rating:4.4, desc:'AI音乐生成平台，与Suno齐名的音乐创作工具，支持多种风格和高质量人声。', features:['音乐生成','多种风格','高质量人声','社区分享','批量创作'], pricing:'免费 + Pro', website:'https://www.udio.com', tags:['音乐','免费'], free:true },
+            { id:183, name:'Mureka V7.5', vendor:'Mureka', cat:'voice', rating:4.3, desc:'AI音乐创作平台，支持多种乐器和风格，适合专业音乐人和业余创作者。', features:['多乐器','多风格','专业品质','批量生成','版权安全'], pricing:'免费 + 付费', website:'https://www.mureka.ai', tags:['音乐','免费'], free:true },
+            { id:184, name:'海绵音乐', vendor:'字节跳动', cat:'voice', rating:4.2, desc:'字节跳动推出的AI音乐创作工具，中文歌曲生成质量优秀，适合国内创作者。', features:['中文歌曲','多种风格','歌词生成','旋律创作','社区分享'], pricing:'免费', website:'https://www.haimianyinyue.com', tags:['国产','音乐','免费'], free:true },
+            { id:185, name:'Lovart', vendor:'Lovart', cat:'design', rating:4.3, desc:'AI设计Agent工具，能处理复杂排版、保持角色一致性，从图片生成进化为全能设计师。', features:['复杂排版','角色一致性','品牌设计','AI Agent','多格式输出'], pricing:'免费 + Pro', website:'https://lovart.ai', tags:['设计','Agent','免费'], free:true },
+            { id:186, name:'Recraft', vendor:'Recraft', cat:'design', rating:4.4, desc:'AI品牌设计平台，统一品牌风格生成矢量图、图标和营销素材，设计品质出色。', features:['品牌统一','矢量图生成','图标设计','营销素材','风格控制'], pricing:'免费 + Pro $12/月', website:'https://www.recraft.ai', tags:['品牌','设计','免费'], free:true },
+            { id:187, name:'Trae', vendor:'字节跳动', cat:'code', rating:4.4, desc:'字节跳动推出的AI原生IDE，基于VS Code，深度集成AI编程能力，中文开发者友好。', features:['AI原生IDE','中文友好','代码生成','智能补全','Git集成'], pricing:'免费', website:'https://www.trae.ai', tags:['国产','IDE','免费'], hot:true, free:true },
+            { id:188, name:'Lovable', vendor:'Lovable', cat:'code', rating:4.3, desc:'AI应用构建平台，从描述生成完整Web应用，支持Supabase后端，GitHub同步。', features:['应用生成','Supabase后端','即时部署','可视化编辑','GitHub同步'], pricing:'免费 + Pro $20/月', website:'https://lovable.dev', tags:['应用构建','免费'], free:true },
+            { id:189, name:'Bolt.new', vendor:'StackBlitz', cat:'code', rating:4.3, desc:'AI全栈Web应用生成器，浏览器中从描述直接生成可部署应用，支持多框架。', features:['全栈生成','浏览器IDE','一键部署','即时预览','多框架'], pricing:'免费 + Pro $20/月', website:'https://bolt.new', tags:['全栈','免费'], free:true },
+            { id:190, name:'Perplexity Comet', vendor:'Perplexity', cat:'search', rating:4.5, desc:'Perplexity推出的AI原生浏览器，集成深度搜索和实时信息获取，搜索体验全面升级。', features:['AI原生浏览器','深度搜索','实时信息','多标签管理','来源引用'], pricing:'免费 + Pro', website:'https://www.perplexity.com', tags:['搜索','浏览器','免费'], hot:true, free:true },
+            { id:191, name:'夸克AI超级框', vendor:'阿里巴巴', cat:'search', rating:4.3, desc:'阿里夸克推出的AI搜索超级入口，集成搜索、问答、创作等多种AI能力，一站式信息获取。', features:['超级搜索','AI问答','内容创作','多端同步','阿里生态'], pricing:'免费', website:'https://www.quark.cn', tags:['国产','搜索','免费'], free:true },
+            { id:192, name:'微信AI搜索', vendor:'腾讯', cat:'search', rating:4.2, desc:'微信内置AI搜索功能，整合公众号、视频号等内容，提供智能问答和信息检索。', features:['微信生态','公众号搜索','视频号检索','智能问答','社交内容'], pricing:'免费', website:'https://weixin.qq.com', tags:['国产','搜索','免费'], free:true },
+            { id:193, name:'小云雀', vendor:'小云雀', cat:'video-gen', rating:4.2, desc:'AI视频Agent产品，自动化剪辑、内置模板和低门槛交互，加速品牌营销和电商视频制作。', features:['自动化剪辑','内置模板','低门槛','品牌营销','电商视频'], pricing:'免费 + 付费', website:'https://www.xiaoyunque.com', tags:['国产','视频','Agent','免费'], free:true },
+            { id:194, name:'NemoVideo', vendor:'NemoVideo', cat:'video-gen', rating:4.1, desc:'AI视频Agent平台，支持自动化视频生成和编辑，适合批量内容生产和营销场景。', features:['自动化生成','批量生产','营销场景','模板丰富','快速输出'], pricing:'免费 + 付费', website:'https://www.nemovideo.com', tags:['视频','Agent','免费'], free:true },
+            { id:195, name:'MixTranslate', vendor:'MixTranslate', cat:'translation', rating:4.3, desc:'聚合AI翻译智能体平台，整合GPT、Gemini、Claude、DeepSeek等20+模型，同屏对比翻译结果。', features:['20+模型聚合','同屏对比','多语言','专业翻译','出海必备'], pricing:'免费 + Pro', website:'https://mixtranslate.com', tags:['翻译','Agent','免费'], free:true },
+            { id:196, name:'PhotoGenerator AI', vendor:'PhotoGenerator', cat:'image-gen', rating:4.2, desc:'基于Flux Kontext技术的AI图像生成和编辑工具，支持文本描述或上传图片实现创意。', features:['Flux Kontext','精准生成','图像编辑','文本描述','创意实现'], pricing:'免费 + 付费', website:'https://photogenerator.ai', tags:['图像','免费'], free:true },
+            { id:197, name:'LangSmith Fleet', vendor:'LangChain', cat:'agent', rating:4.2, desc:'LangChain推出的智能体集群管理平台，支持OpenAI、Anthropic、Gemini等多模型，企业级自托管。', features:['智能体集群','多模型支持','工具级审批','可观测性','企业自托管'], pricing:'企业定制', website:'https://smith.langchain.com', tags:['企业','智能体'] },
+            { id:198, name:'Glean Agent Builder', vendor:'Glean', cat:'agent', rating:4.1, desc:'企业级无代码智能体构建平台，基于企业知识库，支持100+连接器，权限感知。', features:['无代码构建','企业知识库','100+连接器','权限感知','分支循环'], pricing:'企业定制', website:'https://www.glean.com', tags:['企业','智能体'] },
+            { id:199, name:'hermes-agent', vendor:'NousResearch', cat:'agent', rating:4.5, desc:'GitHub 129K+ Stars的团队级AI智能体万能底座，自适应架构随业务成长迭代，企业长期落地首选。', features:['自适应架构','团队级','持续进化','工程适配','129K+Stars'], pricing:'免费开源', website:'https://github.com/NousResearch/hermes-agent', tags:['开源','热门','智能体'], hot:true, free:true },
+            { id:200, name:'Archon', vendor:'Archon', cat:'agent', rating:4.2, desc:'AI智能体工作流治理框架，从智能体底座到多人协作分工再到工作流确定性治理，完整闭环。', features:['工作流治理','多人协作','确定性执行','智能体底座','企业级'], pricing:'免费开源', website:'https://github.com/ArchonAI', tags:['开源','智能体','免费'], free:true },
         ];
 
         // ============ 全局状态 ============
@@ -1191,7 +1237,7 @@
                 'chatbot': '💬', 'llm': '🧠', 'image-gen': '🎨', 'image-edit': '✂️',
                 'video-gen': '🎬', 'video-edit': '🎞️', 'voice': '🎵', 'writing': '✍️',
                 'code': '💻', 'design': '🎯', 'office': '📊', 'search': '🔬',
-                'marketing': '📈', 'education': '📚', 'ecommerce': '🛍️',
+                'marketing': '📈', 'education': '📚', 'ecommerce': '🛍️', 'agent': '🤖',
                 '3d': '🧊', 'digital-human': '👤', 'data': '📉', 'automation': '⚡',
                 'browser': '🌐', 'finance': '⚖️', 'health': '🏥', 'hr': '👥',
                 'translation': '🌍', 'pdf': '📄'
