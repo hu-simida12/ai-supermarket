@@ -11,16 +11,18 @@
     <meta name="theme-color" content="#0f172a">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>AI超市 - 主流AI工具一站式探索平台</title>
-    <meta name="description" content="AI超市汇聚157款主流AI工具，26大分类，提供详细介绍和下载引导。ChatGPT、Claude、Midjourney、DALL·E 3、GitHub Copilot等热门AI工具一站收录。">
+    <meta name="description" content="AI超市汇聚市面上主流AI工具，覆盖对话、大模型、图像、视频、编程、智能体等分类，提供详细介绍与使用引导，持续更新中。">
     <meta name="keywords" content="AI工具,AI超市,人工智能工具,ChatGPT,Midjourney,AI导航,AI工具箱">
     <meta property="og:title" content="AI超市 - 主流AI工具一站式探索平台">
-    <meta property="og:description" content="157款主流AI工具，26大分类，提供详细介绍和下载引导。">
+    <meta property="og:description" content="主流AI工具聚合导航，分类齐全、持续更新。">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AI超市">
     <meta property="og:locale" content="zh_CN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI超市 - 主流AI工具一站式探索平台">
-    <link rel="canonical" href="https://ai-supermarket.pages.dev">
+    <link rel="canonical" href="https://hu-simida12.github.io/ai-supermarket/">
+    <!-- GoatCounter 全端口访问统计（PC / 手机 / 微信内浏览器统一计数） -->
+    <script data-goatcounter="https://__GOATCOUNTER_SITE__.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     <!-- 微信JS-SDK兼容 -->
     <style>
         :root {
@@ -553,14 +555,15 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="stats-bar" id="statsBar" style="display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;font-size:0.85rem;">
-            <span>👁️ 今日 <strong id="statToday">0</strong></span>
-            <span>📅 本月 <strong id="statMonth">0</strong></span>
-            <span>📊 本季 <strong id="statQuarter">0</strong></span>
-            <span>📈 全年 <strong id="statYear">0</strong></span>
-            <span>🕐 累计 <strong id="statTotal">0</strong></span>
+            <span title="本机统计：仅记录当前设备/浏览器的访问次数">👁️ 今日 <strong id="statToday">0</strong></span>
+            <span title="本机统计：仅记录当前设备/浏览器的访问次数">📅 本月 <strong id="statMonth">0</strong></span>
+            <span title="本机统计：仅记录当前设备/浏览器的访问次数">📊 本季 <strong id="statQuarter">0</strong></span>
+            <span title="本机统计：仅记录当前设备/浏览器的访问次数">📈 全年 <strong id="statYear">0</strong></span>
+            <span title="本机统计：仅记录当前设备/浏览器的访问次数">🕐 累计 <strong id="statTotal">0</strong></span>
+            <span style="font-size:0.72rem;opacity:0.65;">（本机口径 · 全端口统计见后台）</span>
             <button onclick="showStatsPanel()" style="background:var(--accent);color:white;border:none;padding:4px 12px;border-radius:12px;cursor:pointer;font-size:0.78rem;">📋 详细统计</button>
         </div>
-        <p>AI超市 © 2025 · 收录200款主流AI工具 · 持续更新中 · 数据来源公开信息整理</p>
+        <p>AI超市 © <span id="footerYear">2026</span> · 收录 <strong id="footerCount">200</strong> 款主流AI工具 · 最近更新：<span id="lastUpdateDate">2026-09-04</span> · 持续更新中 · 数据来源公开信息整理</p>
         <p style="margin-top:4px;">本站仅做工具收录和介绍，各工具版权归原作者所有</p>
     </footer>
 
@@ -1045,9 +1048,12 @@
                     </div>
                 </div>`:''}
                 <div class="detail-section">
-                    <p style="font-size:0.78rem;color:var(--text-muted);text-align:center;">
-                        ⚠️ 数据存储在浏览器本地，仅统计当前设备/浏览器的访问次数。<br>
-                        如需全平台统一统计，请前往 <a href="https://www.goatcounter.com/signup" target="_blank" style="color:var(--accent-light);">GoatCounter</a> 注册免费账号。
+                    <p style="font-size:0.78rem;color:var(--text-muted);text-align:left;line-height:1.7;">
+                        ⚠️ 上方所有数字（今日/本月/累计等）为<b>本机口径</b>：存储在浏览器 localStorage，仅统计当前设备/浏览器（清缓存或换设备会归零）。<br>
+                        ✅ 全端口统一访问统计（PC 浏览器 / 手机浏览器 / 微信内浏览器等所有打开本页的终端）已接入 GoatCounter，实时汇总，可访问
+                        <a href="https://__GOATCOUNTER_SITE__.goatcounter.com" target="_blank" style="color:var(--accent-light);">GoatCounter 统计后台</a>
+                        查看总访问量及设备/地区/来源明细。<br>
+                        📱 小程序端：本站当前为网页版，暂无小程序版本，故无小程序统计数据；后续若上线小程序端，其访问数据可通过 GoatCounter 或微信统计 SDK 一并接入。
                     </p>
                 </div>
             `;
@@ -1061,6 +1067,12 @@
         }
 
         // ============ 初始化 ============
+        // 全端口统一统计配置：GoatCounter 站点标识（形如 abc123，对应 https://abc123.goatcounter.com）
+        // 页面头部已加载其统计脚本，本页在任何终端（PC/手机/微信内浏览器）被打开即自动计数一次。
+        const GOATCOUNTER_SITE = '__GOATCOUNTER_SITE__';
+        // 版本/最近更新日期（双周更新任务每次推送时更新此行）
+        const LAST_UPDATE_DATE = '2026-09-04';
+
         function init() {
             recordVisit();
             createStars();
@@ -1069,6 +1081,13 @@
             renderTools();
             document.getElementById('totalTools').textContent = tools.length;
             document.getElementById('totalCats').textContent = categories.length - 1;
+            // 页脚动态信息：年份、工具总数、最近更新日期
+            const fy = document.getElementById('footerYear');
+            if (fy) fy.textContent = new Date().getFullYear();
+            const fc = document.getElementById('footerCount');
+            if (fc) fc.textContent = tools.length;
+            const lu = document.getElementById('lastUpdateDate');
+            if (lu) lu.textContent = LAST_UPDATE_DATE;
         }
 
         // 星空背景
