@@ -21,8 +21,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI超市 - 主流AI工具一站式探索平台">
     <link rel="canonical" href="https://hu-simida12.github.io/ai-supermarket/">
-    <!-- GoatCounter 全端口访问统计（PC / 手机 / 微信内浏览器统一计数） -->
-    <script data-goatcounter="https://__GOATCOUNTER_SITE__.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <!-- 访问统计说明：本页不挂任何第三方统计脚本；全端口（PC / 手机 / 微信内浏览器等）访问量由 GitHub Pages 在仓库 Insights → Traffic 统一汇总，仅仓库 owner 可见 -->
     <!-- 微信JS-SDK兼容 -->
     <style>
         :root {
@@ -1050,10 +1049,10 @@
                 <div class="detail-section">
                     <p style="font-size:0.78rem;color:var(--text-muted);text-align:left;line-height:1.7;">
                         ⚠️ 上方所有数字（今日/本月/累计等）为<b>本机口径</b>：存储在浏览器 localStorage，仅统计当前设备/浏览器（清缓存或换设备会归零）。<br>
-                        ✅ 全端口统一访问统计（PC 浏览器 / 手机浏览器 / 微信内浏览器等所有打开本页的终端）已接入 GoatCounter，实时汇总，可访问
-                        <a href="https://__GOATCOUNTER_SITE__.goatcounter.com" target="_blank" style="color:var(--accent-light);">GoatCounter 统计后台</a>
-                        查看总访问量及设备/地区/来源明细。<br>
-                        📱 小程序端：本站当前为网页版，暂无小程序版本，故无小程序统计数据；后续若上线小程序端，其访问数据可通过 GoatCounter 或微信统计 SDK 一并接入。
+                        ✅ 全端口统一访问统计（PC 浏览器 / 手机浏览器 / 微信内浏览器等所有打开本页的终端）由 <b>GitHub Pages 官方在仓库后台统一计数</b>（覆盖任何终端访问 GitHub Pages 的请求），前往
+                        <a href="https://github.com/hu-simida12/ai-supermarket/graphs/traffic" target="_blank" style="color:var(--accent-light);">仓库 Insights → Traffic</a>
+                        即可查看过去 14 天的访问量、独立访客、克隆量及来源站点（仅仓库 owner 可见）。<br>
+                        📱 小程序端：当前为网页版，暂无小程序版本，故无小程序统计数据。
                     </p>
                 </div>
             `;
@@ -1067,9 +1066,6 @@
         }
 
         // ============ 初始化 ============
-        // 全端口统一统计配置：GoatCounter 站点标识（形如 abc123，对应 https://abc123.goatcounter.com）
-        // 页面头部已加载其统计脚本，本页在任何终端（PC/手机/微信内浏览器）被打开即自动计数一次。
-        const GOATCOUNTER_SITE = '__GOATCOUNTER_SITE__';
         // 版本/最近更新日期（双周更新任务每次推送时更新此行）
         const LAST_UPDATE_DATE = '2026-09-04';
 
