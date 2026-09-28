@@ -643,11 +643,11 @@
             { id:21, name:'Topaz Photo AI', vendor:'Topaz Labs', cat:'image-edit', rating:4.5, desc:'专业AI图像增强软件，自动去噪、锐化、放大分辨率，适合摄影后期处理。', features:['AI降噪','AI锐化','超分辨率放大','面部恢复','批量处理'], pricing:'$199 一次性购买', website:'https://www.topazlabs.com', tags:['专业','付费'] },
 
             // ===== 视频生成 =====
-            { id:22, name:'Sora', vendor:'OpenAI', cat:'video-gen', rating:4.7, desc:'OpenAI的革命性文生视频模型，可从文本生成逼真视频，支持最长60秒视频生成。', features:['文本生成视频','逼真物理效果','最长60秒','多镜头','风格多样'], pricing:'ChatGPT Plus/Pro 包含', website:'https://openai.com/sora', tags:['热门','革命性'], hot:true },
-            { id:23, name:'Runway Gen-3', vendor:'Runway', cat:'video-gen', rating:4.5, desc:'专业AI视频生成和编辑平台，支持文生视频、图生视频和视频风格转换，影视级品质。', features:['文生视频','图生视频','视频风格转换','运动笔刷','实时预览'], pricing:'免费试用 + $15/月起', website:'https://runwayml.com', tags:['热门','专业'], hot:true, free:true },
+            { id:22, name:'Sora', vendor:'OpenAI', cat:'video-gen', rating:4.7, desc:'OpenAI曾定义AI视频品类的文生视频模型。注意：消费端App已于2026-04-26下线，API将于2026-09-24停用，官方暂无后续产品，存量用户需迁移至Veo/Kling等平台。', features:['已停止服务','App 2026-04下线','API 2026-09停用','无后续产品','需迁移替代'], pricing:'已停止服务', website:'https://openai.com/sora', tags:['已停服','历史产品'] },
+            { id:23, name:'Runway Gen-4.5', vendor:'Runway', cat:'video-gen', rating:4.6, desc:'专业AI视频生成与编辑平台，Gen-4.5位居文生视频质量榜前列；Ruby实现SDR→HDR调色，已升级为多模型平台（可调用Veo/Kling/Seedance/Wan等），新增Adobe插件与MCP Agent。', features:['Gen-4.5文生视频','Ruby HDR调色','多模型平台','Adobe插件','MCP Agent'], pricing:'免费试用 + Pro约$28/月 + Team套餐', website:'https://runway.com', tags:['热门','专业'], hot:true, free:true },
             { id:24, name:'Synthesia', vendor:'Synthesia', cat:'video-gen', rating:4.4, desc:'AI数字人视频生成平台，用AI虚拟人物制作专业视频，支持140+语言和多模板。', features:['AI数字人','140+语言','模板丰富','自动字幕','团队协作'], pricing:'Starter $22/月', website:'https://www.synthesia.io', tags:['数字人','企业'] },
             { id:25, name:'Pika', vendor:'Pika Labs', cat:'video-gen', rating:4.3, desc:'新兴AI视频生成工具，支持文生视频和图生视频，以创意特效和趣味性著称。', features:['文生视频','图生视频','创意特效','Lip Sync口型同步','视频扩展'], pricing:'免费 + 付费', website:'https://pika.art', tags:['创意','免费'], free:true },
-            { id:26, name:'可灵(Kling)视频', vendor:'快手', cat:'video-gen', rating:4.2, desc:'快手推出的AI视频生成功能，支持文生视频和图生视频，生成质量在国产工具中领先。', features:['文生视频','图生视频','物理模拟','运镜控制','1080P输出'], pricing:'免费 + 会员', website:'https://kling.kuaishou.com', tags:['国产','免费'], free:true },
+            { id:26, name:'可灵(Kling)视频', vendor:'快手', cat:'video-gen', rating:4.6, desc:'快手可灵AI视频生成，Kling 3.0实现原生4K 60fps与多镜头AI导演（单次最多6个连贯镜头），Avatar 2.0支持单张照片生成歌舞视频，稳居全球第一梯队。', features:['原生4K 60fps','多镜头AI导演','Motion Control运镜','Avatar 2.0歌舞视频','多语言口型'], pricing:'免费66积分/日 + Standard $10/月 + Pro $37/月', website:'https://kling.kuaishou.com', tags:['国产','热门'], hot:true, free:true },
 
             // ===== 视频编辑 =====
             { id:27, name:'Descript', vendor:'Descript', cat:'video-edit', rating:4.6, desc:'革命性的音视频编辑工具，通过编辑文本来编辑视频，AI自动转录和去除填充词。', features:['文本编辑视频','AI转录','填充词移除','AI配音','屏幕录制'], pricing:'免费 + Pro $24/月', website:'https://www.descript.com', tags:['创新','编辑'], free:true },
@@ -667,7 +667,7 @@
 
             // ===== 编程开发 =====
             { id:37, name:'GitHub Copilot', vendor:'GitHub/Microsoft', cat:'code', rating:4.7, desc:'最流行的AI编程助手，深度集成VS Code和JetBrains等IDE，提供上下文感知的代码补全。', features:['代码自动补全','多语言支持','IDE深度集成','Chat对话编程','代码解释'], pricing:'Individual $10/月 + Business $19/月', website:'https://github.com/features/copilot', tags:['热门','编程必备'], hot:true },
-            { id:38, name:'Cursor', vendor:'Anysphere', cat:'code', rating:4.8, desc:'新一代AI原生代码编辑器，基于VS Code，深度集成AI，支持对话式编程和代码库理解。', features:['AI原生编辑器','代码库全局理解','对话式编程','多模型支持','代码生成与重构'], pricing:'免费 + Pro $20/月', website:'https://cursor.sh', tags:['热门','新一代'], hot:true, free:true },
+            { id:38, name:'Cursor', vendor:'Anysphere', cat:'code', rating:4.8, desc:'新一代AI原生代码编辑器，基于VS Code；2026年9月推出Projects，由协调器Agent规划并调度子Agent舰队，支持云端长时运行与跨设备同步。', features:['AI原生编辑器','Projects协调器Agent','子Agent舰队','多模型支持','跨设备云同步'], pricing:'免费 + Pro $20/月', website:'https://cursor.com', tags:['热门','新一代'], hot:true, free:true },
             { id:39, name:'Replit', vendor:'Replit', cat:'code', rating:4.3, desc:'AI驱动的在线IDE和开发平台，从自然语言描述直接生成应用，支持一键部署。', features:['自然语言生成应用','在线IDE','一键部署','团队协作','多语言支持'], pricing:'免费 + Pro $25/月', website:'https://replit.com', tags:['在线','部署'], free:true },
             { id:40, name:'Windsurf', vendor:'Codeium', cat:'code', rating:4.5, desc:'Codeium推出的AI原生IDE，支持Flow模式的自动编程，上下文理解能力强。', features:['Flow自动编程模式','多文件编辑','Cascade上下文','代码补全','多IDE支持'], pricing:'免费 + Pro $15/月', website:'https://codeium.com/windsurf', tags:['热门','免费'], hot:true, free:true },
 
@@ -725,10 +725,10 @@
             { id:73, name:'Photoroom', vendor:'Photoroom', cat:'image-edit', rating:4.3, desc:'AI产品摄影和图片编辑，手机端即可创建专业产品图，电商必备。', features:['产品摄影','背景替换','AI场景','手机端','批量编辑'], pricing:'免费 + Pro $9.99/月', website:'https://www.photoroom.com', tags:['电商','免费'], free:true },
 
             // ===== 视频生成 补充 =====
-            { id:74, name:'Vidu', vendor:'生数科技', cat:'video-gen', rating:4.4, desc:'国产AI视频生成平台，清华系团队打造，视觉效果清晰，支持多种风格。', features:['文生视频','图生视频','多风格','清晰画质','快速生成'], pricing:'免费 + 会员', website:'https://www.vidu.com', tags:['国产','免费'], free:true },
+            { id:74, name:'Vidu', vendor:'生数科技', cat:'video-gen', rating:4.4, desc:'国产AI视频生成平台，清华系团队打造；Vidu 2.0已于2026年9月发布，多风格与跨镜头一致性进一步提升。', features:['文生视频','图生视频','Vidu 2.0','多风格','快速生成'], pricing:'免费 + 会员', website:'https://www.vidu.com', tags:['国产','免费'], free:true },
             { id:75, name:'Pixverse', vendor:'Pixverse', cat:'video-gen', rating:4.3, desc:'AI视频生成平台，电影级输出，20+相机控制，多参考元素融合。', features:['电影级画质','20+相机控制','多元素融合','快速生成','社区'], pricing:'免费 + Pro', website:'https://app.pixverse.ai', tags:['视频','免费'], free:true },
             { id:76, name:'Luma Ray2', vendor:'Luma AI', cat:'video-gen', rating:4.4, desc:'Luma AI物理感知视频生成器，模拟真实世界物理效果，画质惊艳。', features:['物理感知','真实画质','文生视频','图生视频','相机控制'], pricing:'免费 + Pro', website:'https://lumalabs.ai', tags:['视频','免费'], free:true },
-            { id:77, name:'Hailuo AI', vendor:'MiniMax', cat:'video-gen', rating:4.3, desc:'MiniMax海螺AI视频生成，指令遵循能力最强，原生1080p输出。', features:['指令遵循','1080p原生','文生视频','图生视频','快速生成'], pricing:'免费 + 会员', website:'https://hailuoai.video', tags:['国产','免费'], free:true },
+            { id:77, name:'Hailuo AI', vendor:'MiniMax', cat:'video-gen', rating:4.5, desc:'MiniMax海螺AI视频生成，H3系列已发布（H3 Max为开放权重旗舰），布料/流体/碰撞等物理真实感领先，6/10秒短素材出片快。', features:['H3系列模型','物理真实感','文生视频','图生视频','快速生成'], pricing:'免费 + 会员', website:'https://hailuoai.video', tags:['国产','免费'], free:true },
             { id:78, name:'腾讯混元视频', vendor:'腾讯', cat:'video-gen', rating:4.2, desc:'腾讯混元大模型的AI视频生成能力，图生视频运动一致性和真实感强。', features:['图生视频','运动一致性','真实感','微信生态','免费使用'], pricing:'免费', website:'https://aivideo.hunyuan.tencent.com', tags:['国产','免费'], free:true },
 
             // ===== 语音与音乐 补充 =====
@@ -785,7 +785,7 @@
             { id:113, name:'Clerk.io', vendor:'Clerk', cat:'ecommerce', rating:4.1, desc:'AI电商个性化和搜索平台，智能推荐、搜索优化和邮件个性化。', features:['智能推荐','搜索优化','邮件个性化','行为分析','A/B测试'], pricing:'企业定制', website:'https://www.clerk.io', tags:['电商','推荐'] },
 
             // ===== 3D与虚拟制作 =====
-            { id:114, name:'Meshy AI', vendor:'Meshy', cat:'3d', rating:4.4, desc:'AI 3D建模平台，文本/图像生成3D模型，自动UV展开和PBR纹理，快速绑定骨骼。', features:['文本转3D','图像转3D','自动UV展开','PBR纹理','骨骼绑定'], pricing:'免费 + Pro $20/月', website:'https://www.meshy.ai', tags:['3D建模','免费'], free:true },
+            { id:114, name:'Meshy AI', vendor:'Meshy', cat:'3d', rating:4.6, desc:'AI 3D建模平台，Meshy 7已发布：参考图结构与细节还原度大幅提升，新增Multiview多视角、8K纹理、Auto Split与交互式3D Agent对话式创作。', features:['Meshy 7','3D Agent','Multiview多视角','8K纹理','自动拆件'], pricing:'免费 + Pro $20/月', website:'https://www.meshy.ai', tags:['3D建模','免费'], free:true },
             { id:115, name:'Rodin', vendor:'Hyper3D', cat:'3d', rating:4.3, desc:'免费AI 3D模型生成工具，文本/图像转游戏级3D网格，约30秒生成，质量优秀。', features:['文本转3D','图像转3D','游戏级质量','30秒生成','免费使用'], pricing:'免费', website:'https://hyper3d.ai', tags:['3D建模','免费'], free:true },
             { id:116, name:'Luma Genie', vendor:'Luma AI', cat:'3d', rating:4.3, desc:'Luma AI的创意3D生成工具，4个草稿秒出，5-20分钟精修，完全免费。', features:['快速草稿生成','高精度精修','创意风格','完全免费','Web端使用'], pricing:'免费', website:'https://lumalabs.ai/genie', tags:['3D建模','免费'], free:true },
             { id:117, name:'3D AI Studio', vendor:'3D AI Studio', cat:'3d', rating:4.2, desc:'全能Web 3D套件，支持文本/图像转3D和体素模式，质量与Meshy相当。', features:['文本转3D','图像转3D','体素模式','多格式导出','Web端'], pricing:'免费 + Pro', website:'https://3daistudio.com', tags:['3D建模','免费'], free:true },
@@ -793,7 +793,7 @@
             { id:119, name:'CSM AI', vendor:'CSM', cat:'3d', rating:4.0, desc:'从单张图片或文本生成完整3D场景和资产，支持PBR材质和动画。', features:['场景生成','PBR材质','动画支持','图像转3D','文本转3D'], pricing:'免费试用 + 付费', website:'https://csm.ai', tags:['3D场景'] },
 
             // ===== 数字人与虚拟形象 =====
-            { id:120, name:'HeyGen', vendor:'HeyGen', cat:'digital-human', rating:4.6, desc:'AI数字人视频生成平台，从照片创建个性化说话头像，支持多语言和模板。', features:['AI数字人','照片生成头像','多语言','模板丰富','API集成'], pricing:'免费 + Creator $29/月', website:'https://www.heygen.com', tags:['数字人','热门'], hot:true, free:true },
+            { id:120, name:'HeyGen', vendor:'HeyGen', cat:'digital-human', rating:4.7, desc:'AI数字人视频生成平台；Avatar IV模型（180亿参数）已迁移至Google Cloud TPU，生成速度提升1.86倍、每分钟成本最多降低25%，支持多语言与模板。', features:['Avatar IV模型','TPU加速','速度+1.86倍','多语言','API集成'], pricing:'免费 + Creator $29/月', website:'https://www.heygen.com', tags:['数字人','热门'], hot:true, free:true },
             { id:121, name:'D-ID', vendor:'D-ID', cat:'digital-human', rating:4.4, desc:'AI数字人创作平台，将静态照片变为会说话的虚拟形象，适合教育和营销。', features:['照片动画化','说话头像','多语言','API接口','批量生成'], pricing:'免费试用 + $5.99/月起', website:'https://www.d-id.com', tags:['数字人','免费'], free:true },
             { id:122, name:'Hedra', vendor:'Hedra', cat:'digital-human', rating:4.3, desc:'AI角色动画平台，从图像、文字和音频创建表情丰富的动画角色。', features:['角色动画','表情控制','音频驱动','文字驱动','图像驱动'], pricing:'免费 + 付费', website:'https://www.hedra.com', tags:['数字人','免费'], free:true },
             { id:123, name:'必火AI数字人', vendor:'必火AI', cat:'digital-human', rating:4.1, desc:'国产全链路AI数字人创作平台，覆盖电商直播、教育培训、政务服务等场景。', features:['数字人直播','教育培训','政务服务','全链路创作','中文优化'], pricing:'免费 + 会员', website:'https://www.bihuokeji.com', tags:['国产','数字人','免费'], free:true },
